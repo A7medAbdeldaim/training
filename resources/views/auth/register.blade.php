@@ -14,7 +14,6 @@
                             <div class="form-block">
                                 <div class="mb-4">
                                     <h3>Sign up in <strong>CBRS</strong></h3>
-                                    <p class="mb-4">Welcome to our store.</p>
                                 </div>
                                 @include('layouts.errors')
 

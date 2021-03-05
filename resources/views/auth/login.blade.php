@@ -32,11 +32,6 @@
                                     </div>
 
                                     <div class="d-flex mb-5 align-items-center">
-                                        <label class="control control--checkbox mb-0"><span
-                                                class="caption">Remember me</span>
-                                            <input type="checkbox" checked="checked"/>
-                                            <div class="control__indicator"></div>
-                                        </label>
                                         <span class="ml-auto"><a href="#" class="forgot-pass" style="display:none;">Forgot Password</a></span>
                                     </div>
 
@@ -44,9 +39,6 @@
                                            class="btn btn-pill text-white btn-block btn-primary">
 
                                 </form>
-                                <br>
-                                <a href="{{ route('register') }}"
-                                   class="btn btn-pill btn-link text-white btn-block btn-primary">Sign Up </a>
                             </div>
                         </div>
                     </div>

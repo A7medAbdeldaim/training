@@ -21,7 +21,12 @@ class CreateCarsTable extends Migration
             $table->string('model');
             $table->double('price');
             $table->string('image');
+
+            $table->boolean('type');
+            $table->boolean('status');
+
             $table->integer('user_id');
+            $table->integer('category_id');
             $table->timestamps();
         });
     }
