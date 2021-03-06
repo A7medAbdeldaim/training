@@ -47,7 +47,7 @@
                                         <tr>
                                             <td>{{ (++$k) }}</td>
                                             <td>{{ $user->name }}</td>
-                                            <td>{{ $user->admin == 0 ? 'Seller' : ($user->admin == 1 ? 'Buyer' : 'Admin')  }}</td>
+                                            <td>{{ $user->rank == 0 ? 'Seller' : ($user->rank == 1 ? 'Buyer' : 'Admin')  }}</td>
                                             <td>{{ \Carbon\Carbon::parse($user->created_at)->format('M d, Y') }}</td>
                                         </tr>
                                     @endforeach

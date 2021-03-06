@@ -42,9 +42,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="admin">User Type</label>
-                                        <select id="admin" class="form-control"
-                                               name="admin" required>
+                                        <label for="rank">User Type</label>
+                                        <select id="rank" class="form-control"
+                                               name="rank" required>
                                             <option value="0">Seller</option>
                                             <option value="1">Buyer</option>
                                             <option value="2">Admin</option>

@@ -72,7 +72,7 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    @if (auth()->user()->type == 2)
+                    @if (auth()->user()->rank == 2)
                         <li class="nav-item">
                             <a href="{{ route('admin.users') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
