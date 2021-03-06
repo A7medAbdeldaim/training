@@ -35,6 +35,16 @@
                                                value="{{old('name')}}" required>
                                     </div>
                                 </div>
+
+                                <div class="card-body col-6">
+                                    <div class="form-group">
+                                        <label for="type">Type</label>
+                                        <select id="type" class="form-control" name="type">
+                                            <option value=0>Bike</option>
+                                            <option value=1>Car</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">

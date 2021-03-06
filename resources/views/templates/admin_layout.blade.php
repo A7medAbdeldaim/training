@@ -49,14 +49,14 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="#" class="brand-link">
+        <a href="{{ route('home') }}" class="brand-link">
             <span class="brand-text font-weight-light">CBRS</span>
         </a>
 
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
                     <img src="{{ asset('admin_panel/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
                          alt="User Image">
@@ -64,7 +64,7 @@
                 <div class="info">
                     <a href="#" class="d-block">Alexander Pierce</a>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -72,16 +72,31 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item">
-                        <a href="{{ route('admin.users') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>Users</p>
-                        </a>
-                    </li>
+                    @if (auth()->user()->type == 2)
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
+                    @endif
+
                     <li class="nav-item">
                         <a href="{{ route('admin.categories.all') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>Categories</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.bikes.all') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>Bikes</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.cars.all') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>Cars</p>
                         </a>
                     </li>
                 </ul>

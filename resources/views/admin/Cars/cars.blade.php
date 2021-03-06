@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Categories</h1>
+                        <h1>Cars</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -23,10 +23,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title w-100">
-                                    Categories
+                                    Cars
                                     <span class="float-right">
-                                        <a href="{{ route('admin.categories.create') }}" class="btn btn-sm btn-success">
-                                            <i class="fa fa-plus-circle"></i> Create Category
+                                        <a href="{{ route('admin.cars.create') }}" class="btn btn-sm btn-success">
+                                            <i class="fa fa-plus-circle"></i> Create Car
                                         </a>
                                     </span>
                                 </h3>
@@ -38,6 +38,8 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Model</th>
                                         <th>Type</th>
                                         <th>Date</th>
                                     </tr>
@@ -47,9 +49,10 @@
                                         <tr>
                                             <td>{{ (++$k) }}</td>
                                             <td>{{ $row->name }}</td>
-                                            <td>{{ $row->type == 0 ? 'Bike' : 'Car' }}</td>
+                                            <td>{{ $row->price }}</td>
+                                            <td>{{ $row->model }}</td>
+                                            <td>{{ $row->type_name }}</td>
                                             <td>{{ \Carbon\Carbon::parse($row->created_at)->format('M d, Y') }}</td>
-                                            
                                         </tr>
                                     @endforeach
                                     </tbody>

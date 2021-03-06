@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 class UsersController extends Controller {
     public function index() {
         $users = User::all();
-        return view('admin.users', ['users' => $users]);
+        return view('admin.Users.users', ['users' => $users]);
     }
 
     public function create() {
-        return view('admin.add_user');
+        return view('admin.Users.add_user');
     }
 
     public function store(Request $request) {

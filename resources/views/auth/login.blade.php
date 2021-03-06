@@ -14,7 +14,6 @@
                             <div class="form-block">
                                 <div class="mb-4">
                                     <h3>Sign In to <strong>CBRS</strong></h3>
-                                    <p class="mb-4">Welcome to our store.</p>
                                 </div>
                                 @include('layouts.errors')
 
@@ -32,10 +31,10 @@
                                     </div>
 
                                     <div class="d-flex mb-5 align-items-center">
-                                        <span class="ml-auto"><a href="#" class="forgot-pass" style="display:none;">Forgot Password</a></span>
+                                        <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
                                     </div>
 
-                                    <input type="submit" value="Log In"
+                                    <input type="submit" value="Sign In"
                                            class="btn btn-pill text-white btn-block btn-primary">
 
                                 </form>

@@ -23,10 +23,11 @@ class CategoryController extends Controller {
 
     public function store(Request $request) {
         $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'type' => 'required|integer|in:0,1'
         ]);
 
-        Category::create($request->only('name'));
+        Category::create($request->only('name') + $request->only('type'));
 
         return redirect()->route('admin.categories.all')->with(['status' => 'success', 'message' => 'Category Added Successfully']);
     }

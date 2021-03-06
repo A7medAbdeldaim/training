@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bike;
+use App\Models\Car;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $cars = Car::where('status', 1)->limit(6)->get();
+        $bikes = Bike::where('status', 1)->limit(6)->get();
+        return view('home', compact('cars', 'bikes'));
     }
 
     public function about() {

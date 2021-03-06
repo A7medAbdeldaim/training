@@ -40,8 +40,21 @@
 
         <nav class="nav-menu">
             <ul>
-                <li class=""><a href="{{ route('login') }}">Login</a></li>
-                <li class=""><a href="{{ route('register') }}">Register</a></li>
+                @auth
+                    <li class=""><a onclick="submit_form()" href="#">Logout</a></li>
+                    <form id="logout_form" class="d-none" method="post" action="{{ route('logout') }}">
+                        @csrf
+                    </form>
+                    <script>
+                        function submit_form() {
+                            document.getElementById('logout_form').submit();
+                        }
+                    </script>
+                @else
+                    <li class=""><a href="{{ route('login') }}">Login</a></li>
+                    <li class=""><a href="{{ route('register') }}">Register</a></li>
+                @endauth
+
             </ul>
         </nav>
 
@@ -57,20 +70,18 @@
                     <ul>
                         <li class="drop-down"><a href="#">Cars</a>
                             <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
+                                @foreach(App\Models\Category::where('type', 1)->get() as $category)
+
+                                    <li><a href="#">{{ $category->name}}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="drop-down"><a href="#">Bikes</a>
                             <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
+                            @foreach(App\Models\Category::where('type', 0)->get() as $category)
+
+                                <li><a href="#">{{ $category->name}}</a></li>
+                            @endforeach
                             </ul>
                         </li>
                     </ul>

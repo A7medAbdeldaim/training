@@ -32,11 +32,23 @@ Route::get('/cars/show/{id}', [CarController::class, 'show'])->name('cars.show')
 Route::get('/cars/create', [CarController::class, 'create'])->name('cars.create');
 Route::get('/cars/store', [CarController::class, 'store'])->name('cars.store');
 
-Route::get('/admin/users', [UsersController::class, 'index'])->name('admin.users');
-Route::get('/admin/users/create', [UsersController::class, 'create'])->name('admin.users.create');
-Route::post('/admin/users/store', [UsersController::class, 'store'])->name('admin.users.store');
 
-Route::get('/admin/categories', [CategoryController::class, 'get'])->name('admin.categories.all');
-Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
-Route::post('/admin/categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
+Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => 'auth'], function(){
+    Route::get('/', [UsersController::class, 'index'])->name('admin');
+    Route::get('users', [UsersController::class, 'index'])->name('users');
+    Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
+    Route::post('users/store', [UsersController::class, 'store'])->name('users.store');
+
+    Route::get('categories', [CategoryController::class, 'get'])->name('categories.all');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('categories/store', [CategoryController::class, 'store'])->name('categories.store');
+
+    Route::get('bikes', [BikeController::class, 'get'])->name('bikes.all');
+    Route::get('bikes/create', [BikeController::class, 'create'])->name('bikes.create');
+    Route::post('bikes/store', [BikeController::class, 'store'])->name('bikes.store');
+
+    Route::get('cars', [CarController::class, 'get'])->name('cars.all');
+    Route::get('cars/create', [CarController::class, 'create'])->name('cars.create');
+    Route::post('cars/store', [CarController::class, 'store'])->name('cars.store');
+});
 

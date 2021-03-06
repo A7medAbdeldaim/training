@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'type'];
+
+    public function items() {
+        if ($this->attributes['type'] == 0) {
+            return $this->hasMany(Bike::class, 'category_id');
+        }
+        return $this->hasMany(Car::class, 'category_id');
+    }
 }

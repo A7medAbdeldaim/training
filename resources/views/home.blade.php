@@ -16,27 +16,15 @@
             <div class="row content" data-aos="fade-up">
                 <div class="col-lg-6">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore
-                        magna aliqua.
+                        The website works to facilitate the rent of bicycles and cars through the web site.
+                        Bicycle's or car's owners can add their bicycles or cars and add price of rent for each bicycles or cars.
+                        Our website provide this service (rent of bicycles or cars) for users which will use our web site, each user before rent any bicycles or cars will know all information about this bicycles or cars which are (model of bicycles or cars, price of rent/hour,
                     </p>
-                    <ul>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat
-                        </li>
-                        <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate
-                            velit
-                        </li>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat
-                        </li>
-                    </ul>
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0">
                     <p>
-                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                        in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
+                         available or not, bicycle's owner name or car's owner name).
+                        Our website provide this service for our users which users can search by area then our website will appear all available cars or bicycles to rent.
                     </p>
                     <a href="{{ route('about') }}" class="btn-learn-more">Learn More</a>
                 </div>
@@ -59,16 +47,14 @@
                     <div class="icon-box" data-aos="zoom-in-left">
                         <div class="icon"><i class="las la-basketball-ball" style="color: #ff689b;"></i></div>
                         <h4 class="title"><a href="">Cars Rental</a></h4>
-                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
-                            excepturi sint occaecati cupiditate non provident</p>
+                        <p class="description">Allow the people to rental there’s car and bikes</p>
                     </div>
                 </div>
                 <div class="col-md-6 mt-5 mt-md-0">
                     <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="100">
                         <div class="icon"><i class="las la-book" style="color: #e9bf06;"></i></div>
                         <h4 class="title"><a href="">Bikes Rental</a></h4>
-                        <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat tarad limino ata</p>
+                        <p class="description">website cost effective and innovative To help the customer And provide a helpful service</p>
                     </div>
                 </div>
 
@@ -76,16 +62,14 @@
                     <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="200">
                         <div class="icon"><i class="las la-file-alt" style="color: #3fcdc7;"></i></div>
                         <h4 class="title"><a href="">Cars Selling</a></h4>
-                        <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla pariatur</p>
+                        <p class="description">Allow the people to sell there’s car and bikes</p>
                     </div>
                 </div>
                 <div class="col-md-6 mt-5">
                     <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="300">
                         <div class="icon"><i class="las la-tachometer-alt" style="color:#41cf2e;"></i></div>
                         <h4 class="title"><a href="">Bikes Selling</a></h4>
-                        <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum</p>
+                        <p class="description">website cost effective and innovative To help the customer And provide a helpful service</p>
                     </div>
                 </div>
             </div>
@@ -109,142 +93,34 @@
             </ul>
 
             <div class="row portfolio-container" data-aos="fade-up">
+                @foreach($cars as $car)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
+                        <a href="{{ route('cars.show', $car->id) }}">
+                            <div class="portfolio-img">
+                                <img src="{{ $car->image }}" class="img-fluid" alt="">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>{{ $car->name }}</h4>
+                                <p>{{ \Illuminate\Support\Str::limit($car->description, 50) }}</p>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
+                @foreach($bikes as $bike)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-bike2">
+                        <a href="{{ route('bikes.show', $bike->id) }}">
+                            <div class="portfolio-img">
+                                <img src="{{ $bike->image }}" class="img-fluid" alt="">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>{{ $bike->name }}</h4>
+                                <p>{{ \Illuminate\Support\Str::limit($bike->description, 50) }}</p>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-bike2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-bike2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-bike2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-bike2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-bike2">
-                    <div class="portfolio-img"><img src="{{ asset('new/img/portfolio/portfolio-2.jpg') }}"
-                                                    class="img-fluid" alt=""></div>
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{{ asset('new/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
-                           class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
+                @endforeach
             </div>
-
         </div>
     </section><!-- End Portfolio Section -->
 
