@@ -34,7 +34,7 @@ Route::get('/cars/store', [CarController::class, 'store'])->name('cars.store');
 
 
 Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => 'auth'], function(){
-    Route::get('/', [UsersController::class, 'index'])->name('admin');
+    Route::get('/', [CategoryController::class, 'get'])->name('admin');
     Route::get('users', [UsersController::class, 'index'])->name('users');
     Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
     Route::post('users/store', [UsersController::class, 'store'])->name('users.store');
