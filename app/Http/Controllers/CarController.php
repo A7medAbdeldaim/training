@@ -35,7 +35,7 @@ class CarController extends Controller
 
         $request = $request->except('_token', 'image');
 
-        Car::create($request + ['image' => $file_path ?? '', 'user_id' => 1]);
+        Car::create($request + ['image' => $file_path ?? '', 'user_id' => auth()->id()]);
 
         return redirect()->route('admin.cars.all')->with(['status' => 'success', 'message' => 'Car Added Successfully']);
     }

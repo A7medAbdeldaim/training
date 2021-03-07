@@ -34,7 +34,7 @@ class BikeController extends Controller
 
         $request = $request->except('_token', 'image');
 
-        Bike::create($request + ['image' => $path ?? '', 'user_id' => 1]);
+        Bike::create($request + ['image' => $path ?? '', 'user_id' => auth()->id()]);
 
         return redirect()->route('admin.bikes.all')->with(['status' => 'success', 'message' => 'Bike Added Successfully']);
     }
