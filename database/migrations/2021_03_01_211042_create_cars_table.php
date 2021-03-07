@@ -17,7 +17,7 @@ class CreateCarsTable extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('model');
             $table->double('price');
             $table->string('image');
