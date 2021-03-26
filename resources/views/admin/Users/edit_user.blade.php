@@ -25,20 +25,21 @@
                                 <h3 class="card-title">Create a New User</h3>
                             </div>
                             @include('templates.errors')
-                            <form role="form" action="{{ route('admin.users.store') }}" method="post">
+                            <form role="form" action="{{ route('admin.users.update', $user->id) }}" method="post">
                                 @csrf
+                                {{ method_field('PATCH') }}
                                 <div class="card-body col-6">
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input type="text" id="name" class="form-control"
                                                placeholder="Enter User Name" name="name"
-                                               value="{{old('name')}}" required>
+                                               value="{{$user->name}}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
                                         <input type="email" id="email" class="form-control"
                                                placeholder="Enter User Email" name="email"
-                                               value="{{old('email')}}" required>
+                                               value="{{$user->email}}" required>
                                     </div>
 
                                     <div class="form-group">

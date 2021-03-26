@@ -31,4 +31,41 @@ class UsersController extends Controller {
 
         return redirect()->route('admin.users')->with(['status' => 'success', 'message' => 'User Added Successfully']);
     }
+
+    public function edit($id){
+        $user = User::find($id);
+        return view('admin.Users.edit_user', compact('user'));
+    }
+
+    public function update(Request $request, $id) {
+        $user = User::find($id);
+
+        if (!$user) {
+            abort(404);
+        }
+
+        $request->validate([
+            'name' => 'required|string',
+            'rank' => 'required|in:0,1,2',
+            'password' => 'required|string|max:255|confirmed',
+        ]);
+
+        $pass = Hash::make($request->get('password'));
+        $request = $request->except('password', '_token');
+
+        $user->update($request + ['password' => $pass]);
+
+        return redirect()->route('admin.users')->with(['status' => 'success', 'message' => 'User Edited Successfully']);
+    }
+
+    public function destroy($id) {
+        $user = User::find($id);
+
+        if (!$user) {
+            abort(404);
+        }
+        $user->delete();
+
+        return redirect()->route('admin.users')->with(['status' => 'success', 'message' => 'User Deleted Successfully']);
+    }
 }

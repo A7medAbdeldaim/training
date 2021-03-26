@@ -42,6 +42,7 @@
                                         <th>Model</th>
                                         <th>Type</th>
                                         <th>Date</th>
+                                        <th>Control</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -53,6 +54,10 @@
                                             <td>{{ $row->model }}</td>
                                             <td>{{ $row->type_name }}</td>
                                             <td>{{ \Carbon\Carbon::parse($row->created_at)->format('M d, Y') }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.cars.edit', $row->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                                <a href="{{ route('admin.cars.destroy', $row->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

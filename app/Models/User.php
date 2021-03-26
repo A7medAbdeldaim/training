@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -22,6 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'rank',
+        'image'
     ];
 
     /**
@@ -49,5 +51,9 @@ class User extends Authenticatable
 
     public function cars() {
         return $this->hasMany(Car::class);
+    }
+
+    public function getImageAttribute() {
+        return Storage::disk('public')->url($this->attributes['image']);
     }
 }

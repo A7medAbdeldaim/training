@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bike;
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -26,11 +27,59 @@ class HomeController extends Controller
     public function index()
     {
         $cars = Car::where('status', 1)->limit(6)->get();
+
         $bikes = Bike::where('status', 1)->limit(6)->get();
         return view('home', compact('cars', 'bikes'));
     }
 
     public function about() {
         return view('about');
+    }
+
+    public function search(Request $request) {
+        $search = $request->search;
+
+        if ($request->has('type')) {
+            if ($request->type == 1) {
+                $type = 'car';
+                $data = Car::where('name', 'like', "%$search%")->get();
+            } else {
+                $type = 'bike';
+                $data = Bike::where('name', 'like', "%$search%")->get();
+            }
+        } else {
+            $type = 'car';
+            $data = Car::where('name', 'like', "%$search%")->get();
+        }
+
+        return view('search', compact('search', 'data', 'type'));
+    }
+
+    public function profile(){
+        return view('profile');
+    }
+
+    public function profile_post(Request $request) {
+        $user = auth()->user();
+        if ($request->has('name')) {
+            $user->name = $request->get('name');
+        }
+
+        if ($request->has('email')) {
+            $user->email = $request->get('email');
+        }
+
+        if ($request->has('password')) {
+            $user->password = Hash::make($request->get('password'));
+        }
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = $file->store('user', ['disk' => 'public']);
+            $user->image = $path;
+        }
+
+        $user->save();
+        return redirect()->back();
     }
 }

@@ -38,4 +38,43 @@ class BikeController extends Controller
 
         return redirect()->route('admin.bikes.all')->with(['status' => 'success', 'message' => 'Bike Added Successfully']);
     }
+
+    public function edit($id){
+        $bike = Bike::find($id);
+        return view('admin.Bikes.edit_bike', compact('bike'));
+    }
+
+    public function update(Request $request, $id) {
+        $bike = Bike::find($id);
+
+        if (!$bike) {
+            abort(404);
+        }
+
+        $bike->update($request->all());
+
+        return redirect()->route('admin.bikes.all')->with(['status' => 'success', 'message' => 'Bike Edited Successfully']);
+    }
+
+    public function destroy($id) {
+        $bike = Bike::find($id);
+
+        if (!$bike) {
+            abort(404);
+        }
+        $bike->delete();
+
+        return redirect()->route('admin.bikes.all')->with(['status' => 'success', 'message' => 'Bike Edited Successfully']);
+    }
+
+    public function rent($id) {
+        $bike = Bike::find($id);
+
+        if (!$bike) {
+            abort(404);
+        }
+        $bike->update(['status' => 0]);
+
+        return view('bike', compact('bike'));
+    }
 }

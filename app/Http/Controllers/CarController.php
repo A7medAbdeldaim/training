@@ -39,4 +39,43 @@ class CarController extends Controller
 
         return redirect()->route('admin.cars.all')->with(['status' => 'success', 'message' => 'Car Added Successfully']);
     }
+
+    public function edit($id){
+        $car = Car::find($id);
+        return view('admin.Cars.edit_car', compact('car'));
+    }
+
+    public function update(Request $request, $id) {
+        $car = Car::find($id);
+
+        if (!$car) {
+            abort(404);
+        }
+
+        $car->update($request->all());
+
+        return redirect()->route('admin.cars.all')->with(['status' => 'success', 'message' => 'Car Edited Successfully']);
+    }
+
+    public function destroy($id) {
+        $car = Car::find($id);
+
+        if (!$car) {
+            abort(404);
+        }
+        $car->delete();
+
+        return redirect()->route('admin.cars.all')->with(['status' => 'success', 'message' => 'Car Edited Successfully']);
+    }
+
+    public function rent($id) {
+        $car = Car::find($id);
+
+        if (!$car) {
+            abort(404);
+        }
+        $car->update(['status' => 0]);
+
+        return view('car', compact('car'));
+    }
 }

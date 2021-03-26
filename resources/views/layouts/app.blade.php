@@ -14,7 +14,9 @@
     <link href="{{ asset('new/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i') }}" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i') }}"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('new/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -35,13 +37,24 @@
 <body>
 
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top d-flex align-items-center {{ request()->routeIs('home') ? 'header-transparent' : '' }} ">
+<header id="header"
+        class="fixed-top d-flex align-items-center {{ request()->routeIs('home') ? 'header-transparent' : '' }} ">
     <div class="container d-flex justify-content-between">
 
         <nav class="nav-menu">
             <ul>
                 @auth
-                    <li class=""><a onclick="submit_form()" href="#">Logout</a></li>
+                    <li class="">
+                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                            {{ auth()->user()->name }}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="text-dark" href="{{ route('profile') }}">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="text-dark" onclick="submit_form()" href="#">Logout</a>
+                        </div>
+                    </li>
                     <form id="logout_form" class="d-none" method="post" action="{{ route('logout') }}">
                         @csrf
                     </form>
@@ -61,27 +74,40 @@
         <div class="logo">
             <h1 class="text-light"><a href="{{ route('home') }}">CBRS</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html"><img src="{{ asset('new/img/logo.png') }}" alt="" class="img-fluid"></a>-->
+        <!-- <a href="index.html"><img src="{{ asset('new/img/logo.png') }}" alt="" class="img-fluid"></a>-->
         </div>
 
         <nav class="nav-menu d-none d-lg-block float-right">
             <ul>
-                <li class="drop-down"><a href="">Categories</a>
+                <li>
+                    <form action="{{ route('search') }}" method="post">
+                        @csrf
+                        <div class="input-group" style="border: none">
+                            <div class="form-outline">
+                                <input type="search" name="search" id="form1" class="form-control" style="background: rgba(255,255,255,0.8)"/>
+                            </div>
+                            <button type="submit" class="btn btn-success pl-2 pr-2">
+                                Search
+                            </button>
+                        </div>
+                    </form>
+                </li>
+                <li class="drop-down"><a href="#">Categories</a>
                     <ul>
                         <li class="drop-down"><a href="#">Cars</a>
                             <ul>
                                 @foreach(App\Models\Category::where('type', 1)->get() as $category)
 
-                                    <li><a href="#">{{ $category->name}}</a></li>
+                                    <li><a href="{{ '#' }}">{{ $category->name}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
                         <li class="drop-down"><a href="#">Bikes</a>
                             <ul>
-                            @foreach(App\Models\Category::where('type', 0)->get() as $category)
+                                @foreach(App\Models\Category::where('type', 0)->get() as $category)
 
-                                <li><a href="#">{{ $category->name}}</a></li>
-                            @endforeach
+                                    <li><a href="#">{{ $category->name}}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                     </ul>
@@ -93,55 +119,58 @@
 </header><!-- End Header -->
 
 @if (request()->routeIs('home'))
-    <section id="hero" class="d-flex flex-column justify-content-end align-items-center" style='background-image: url("{{ asset('images/slider2.jpg') }}"); background-size: cover'>
-    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+    <section id="hero" class="d-flex flex-column justify-content-end align-items-center"
+             style='background-image: url("{{ asset('images/slider2.jpg') }}"); background-size: cover'>
+        <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
 
-        <!-- Slide 1 -->
-        <div class="carousel-item active">`
-            <div class="carousel-container">
-                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>CBRS</span></h2>
-                <p class="animate__animated fanimate__adeInUp">Best Bikes and Cars Rental System</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+            <!-- Slide 1 -->
+            <div class="carousel-item active">`
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Welcome to <span>CBRS</span></h2>
+                    <p class="animate__animated fanimate__adeInUp">Best Bikes and Cars Rental System</p>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                </div>
             </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Start Now</h2>
+                    <p class="animate__animated animate__fadeInUp">Start now using the website.</p>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
         </div>
 
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-            <div class="carousel-container">
-                <h2 class="animate__animated animate__fadeInDown">Start Now</h2>
-                <p class="animate__animated animate__fadeInUp">Start now using the website.</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-            </div>
-        </div>
+        <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28 " preserveAspectRatio="none">
+            <defs>
+                <path id="wave-path"
+                      d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+            </defs>
+            <g class="wave1">
+                <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)"></use>
+            </g>
+            <g class="wave2">
+                <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)"></use>
+            </g>
+            <g class="wave3">
+                <use xlink:href="#wave-path" x="50" y="9" fill="#fff"></use>
+            </g>
+        </svg>
 
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-
-    </div>
-
-    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
-        <defs>
-            <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
-        </defs>
-        <g class="wave1">
-            <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)"></use>
-        </g>
-        <g class="wave2">
-            <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)"></use>
-        </g>
-        <g class="wave3">
-            <use xlink:href="#wave-path" x="50" y="9" fill="#fff"></use>
-        </g>
-    </svg>
-
-</section><!-- End Hero -->
+    </section><!-- End Hero -->
 @endif
 
 <main id="main" style="margin-top: 40px">
@@ -153,11 +182,10 @@
     <div class="container">
         <h3>CBRS</h3>
         <div class="social-links">
-            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            <a href="https://twitter.com/Cbrs1111" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.instagram.com/cbrs.1111/" class="instagram" target="_blank"><i
+                    class="bx bxl-instagram"></i></a>
+            <a href="mailto:cbrs.1111@gmail.com" class="google-plus" target="_blank"><i class="bx bxl-skype"></i></a>
         </div>
         <div class="copyright">
             &copy; Copyright. All Rights Reserved

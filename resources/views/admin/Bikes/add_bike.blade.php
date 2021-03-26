@@ -39,8 +39,8 @@
                                         <label for="type">Type</label>
                                         <select id="type" class="form-control"
                                                 name="type" required>
-                                            <option value="0">For Rent</option>
-                                            <option value="1">For Sell</option>
+                                            <option selected value="0">For Rent</option>
+{{--                                            <option value="1">For Sell</option>--}}
                                         </select>
                                     </div>
 

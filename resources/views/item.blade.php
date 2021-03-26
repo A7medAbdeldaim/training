@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'About')
+@section('title', 'Show')
 
 @section('content')
 
@@ -9,8 +9,8 @@
         <div class="container">
 
             <div class="section-title" data-aos="zoom-out">
-                <h2>About</h2>
-                <p>Who we are</p>
+                <h2>{{ $item->category->name }}</h2>
+                <p>{{ $item->name }}</p>
             </div>
 
             <div class="row content" data-aos="fade-up">
