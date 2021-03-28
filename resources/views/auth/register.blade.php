@@ -42,11 +42,11 @@
                                     </div>
 
                                     <div class="form-group last mb-4">
-                                        <label for="rank">User Type</label>
+                                        <label for="rank" style="top: 0">User Type</label>
                                         <select id="rank" name="rank" class="form-control">
 {{--                                            <option selected disabled></option>--}}
 {{--                                            <option value="1">Seller</option>--}}
-                                            <option value="2">Buyer</option>
+                                            <option value="2" selected>Buyer</option>
                                         </select>
                                     </div>
 
