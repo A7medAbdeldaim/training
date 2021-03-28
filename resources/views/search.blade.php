@@ -34,7 +34,7 @@
                 </form>
             </div>
 
-            <div class="row content" data-aos="fade-up">
+            <div class="row content">
                 @foreach($data as $row)
                     <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
                         @if ($type == 'car')
