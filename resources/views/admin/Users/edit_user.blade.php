@@ -1,5 +1,5 @@
 @extends('templates.admin_layout')
-@section('title', 'Create User')
+@section('title', 'Edit User')
 
 @section('content')
 
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create User</h1>
+                        <h1>Edit User</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -22,7 +22,7 @@
                     <div class="col-12">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Create a New User</h3>
+                                <h3 class="card-title">Edit a New User</h3>
                             </div>
                             @include('templates.errors')
                             <form role="form" action="{{ route('admin.users.update', $user->id) }}" method="post">
@@ -70,7 +70,7 @@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-success btn-block">Create User</button>
+                                    <button type="submit" class="btn btn-success btn-block">Edit User</button>
                                 </div>
                             </form>
                         </div>

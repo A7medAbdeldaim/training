@@ -185,7 +185,7 @@
             <a href="https://twitter.com/Cbrs1111" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
             <a href="https://www.instagram.com/cbrs.1111/" class="instagram" target="_blank"><i
                     class="bx bxl-instagram"></i></a>
-            <a href="mailto:cbrs.1111@gmail.com" class="google-plus" target="_blank"><i class="bx bxl-skype"></i></a>
+            <a href="mailto:cbrs.1111@gmail.com" class="google-plus" target="_blank"><i class="bx bxl-mail-send"></i></a>
         </div>
         <div class="copyright">
             &copy; Copyright. All Rights Reserved

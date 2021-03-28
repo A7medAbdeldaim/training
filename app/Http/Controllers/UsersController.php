@@ -19,7 +19,7 @@ class UsersController extends Controller {
     public function store(Request $request) {
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|string|email|unique:users,email',
+            'email' => 'required|string|unique:users,email',
             'rank' => 'required|in:0,1,2',
             'password' => 'required|string|max:255|confirmed',
         ]);
