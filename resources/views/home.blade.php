@@ -125,19 +125,19 @@
                         <div class="address">
                             <i class="icofont-google-map"></i>
                             <h4>Location:</h4>
-                            <p>Saudi Arabia, Abha</p>
+                            <p>Military City, Ahad Rafidah 62415, Saudi Arabia</p>
                         </div>
 
                         <div class="email">
                             <i class="icofont-envelope"></i>
                             <h4>Email:</h4>
-                            <p>info@example.com</p>
+                            <p>Ebtisam.moh101@gmail.com</p>
                         </div>
 
                         <div class="phone">
                             <i class="icofont-phone"></i>
                             <h4>Call:</h4>
-                            <p>+1 5589 55488 55s</p>
+                            <p>+966 0563519542</p>
                         </div>
 
                     </div>
@@ -176,7 +176,7 @@
                             <div class="sent-message">Your message has been sent. Thank you!</div>
                         </div>
                         <div class="text-center">
-                            <button type="submit">Send Message</button>
+                            <button type="button" onclick="alert('Your message has been sent. Thank you!')">Send Message</button>
                         </div>
                     </form>
 
