@@ -110,7 +110,7 @@
     </section><!-- End Portfolio Section -->
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact d-none">
+    <section id="contact" class="contact">
         <div class="container">
 
             <div class="section-title" data-aos="zoom-out">
