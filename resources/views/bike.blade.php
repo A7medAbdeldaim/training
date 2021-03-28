@@ -7,8 +7,8 @@
     <div class="container" style="margin-top: 150px; margin-bottom: 150px">
 
         <div class="section-title" data-aos="zoom-out">
-            <h2>{{ $car->category->name }}</h2>
-            <p>{{ $car->name }}</p>
+            <h2>{{ $bike->category->name }}</h2>
+            <p>{{ $bike->name }}</p>
         </div>
 
         <div class="row">

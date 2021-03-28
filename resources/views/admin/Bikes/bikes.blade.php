@@ -26,7 +26,7 @@
                                     Bikes
                                     <span class="float-right">
                                         <a href="{{ route('admin.bikes.create') }}" class="btn btn-sm btn-success">
-                                            <i class="fa fa-plus-circle"></i> Create Bike
+                                            <i class="fa fa-plus-circle"></i> Add Bike
                                         </a>
                                     </span>
                                 </h3>

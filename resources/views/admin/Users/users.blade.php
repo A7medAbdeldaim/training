@@ -26,7 +26,7 @@
                                     Users
                                     <span class="float-right">
                                         <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-success">
-                                            <i class="fa fa-plus-circle"></i> Create User
+                                            <i class="fa fa-plus-circle"></i> Add User
                                         </a>
                                     </span>
                                 </h3>

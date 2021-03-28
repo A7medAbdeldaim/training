@@ -26,7 +26,7 @@
                                     Categories
                                     <span class="float-right">
                                         <a href="{{ route('admin.categories.create') }}" class="btn btn-sm btn-success">
-                                            <i class="fa fa-plus-circle"></i> Create Category
+                                            <i class="fa fa-plus-circle"></i> Add Category
                                         </a>
                                     </span>
                                 </h3>

@@ -26,7 +26,7 @@
                                     Cars
                                     <span class="float-right">
                                         <a href="{{ route('admin.cars.create') }}" class="btn btn-sm btn-success">
-                                            <i class="fa fa-plus-circle"></i> Create Car
+                                            <i class="fa fa-plus-circle"></i> Add Car
                                         </a>
                                     </span>
                                 </h3>
