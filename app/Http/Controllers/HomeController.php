@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contact;
 use App\Models\Bike;
 use App\Models\Car;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -81,5 +84,27 @@ class HomeController extends Controller
 
         $user->save();
         return redirect()->back();
+    }
+
+    public function category($category_id, $type) {
+        if ($type == 'car') {
+            $category = Category::where('id', $category_id)->where('type', 1)->first();
+            $data = Car::where('category_id', $category_id)->where('status', 0)->get();
+        } elseif ($type == 'bike') {
+            $category = Category::where('id', $category_id)->where('type', 0)->first();
+            $data = Bike::where('category_id', $category_id)->where('status', 0)->get();
+        }
+        return view('category', compact('category', 'data', 'type'));
+    }
+
+    public function contact(Request $request) {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'subject' => 'required|string',
+            'message' => 'required|string',
+        ]);
+
+        return Mail::to("email@email.com")->send(new Contact($request->all()));
     }
 }

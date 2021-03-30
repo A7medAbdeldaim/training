@@ -146,7 +146,8 @@
 
                 <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left">
 
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                    <form action="{{ route('contact') }}" method="post" role="form" class="php-email-form">
+                        @csrf
                         <div class="form-row">
                             <div class="col-md-6 form-group">
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
@@ -176,7 +177,7 @@
                             <div class="sent-message">Your message has been sent. Thank you!</div>
                         </div>
                         <div class="text-center">
-                            <button type="button" onclick="alert('Your message has been sent. Thank you!')">Send Message</button>
+                            <button type="submit">Send Message</button>
                         </div>
                     </form>
 

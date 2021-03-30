@@ -24,6 +24,9 @@ Route::post('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::post('/profile', [HomeController::class, 'profile_post'])->name('profile.edit');
+Route::get('/category/{category_id}/{type}', [HomeController::class, 'category'])->name('category');
+
+Route::post('contact-us', [HomeController::class, 'contact'])->name('contact');
 
 Route::get('/bikes', [BikeController::class, 'index'])->name('bikes.all');
 Route::get('/bikes/show/{id}', [BikeController::class, 'show'])->name('bikes.show');

@@ -46,6 +46,15 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <select id="status" class="form-control"
+                                                name="status" required>
+                                            <option {{ $car->status ? 'selected' : '' }}selected value="1">Rented</option>
+                                            <option {{ $car->status == 0 ? 'selected' : '' }}selected value="1">Available for Rent</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea name="description" class="form-control" id="description">{{$car->description}}</textarea>
                                     </div>

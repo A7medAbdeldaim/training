@@ -98,7 +98,7 @@
                             <ul>
                                 @foreach(App\Models\Category::where('type', 1)->get() as $category)
 
-                                    <li><a href="{{ '#' }}">{{ $category->name}}</a></li>
+                                    <li><a href="{{ route('category', ['category_id' => $category->id, 'type' => 'car']) }}">{{ $category->name}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -106,7 +106,7 @@
                             <ul>
                                 @foreach(App\Models\Category::where('type', 0)->get() as $category)
 
-                                    <li><a href="#">{{ $category->name}}</a></li>
+                                    <li><a href="{{ route('category', ['category_id' => $category->id, 'type' => 'bike']) }}">{{ $category->name}}</a></li>
                                 @endforeach
                             </ul>
                         </li>

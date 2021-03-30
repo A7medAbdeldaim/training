@@ -52,11 +52,17 @@
                                             <td>{{ $row->name }}</td>
                                             <td>{{ $row->price }}</td>
                                             <td>{{ $row->model }}</td>
-                                            <td>{{ $row->type_name }}</td>
+                                            <td>
+                                                @if ($row->status == 1)
+                                                    <a href="#" data-toggle="modal" class="btn btn-success btn-block">Rent</a>
+                                                @else
+                                                    <a href="#" class="btn btn-primary btn-block">Rented</a>
+                                                @endif
+                                            </td>
                                             <td>{{ \Carbon\Carbon::parse($row->created_at)->format('M d, Y') }}</td>
                                             <td>
-                                                <a href="{{ route('admin.cars.edit', $row->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                                <a href="{{ route('admin.cars.destroy', $row->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                                <a href="{{ route('admin.bikes.edit', $row->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                                <a href="{{ route('admin.bikes.destroy', $row->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach
