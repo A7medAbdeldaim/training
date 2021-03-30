@@ -1,5 +1,5 @@
 @extends('templates.admin_layout')
-@section('title', 'Create Car')
+@section('title', 'Add Car')
 
 @section('content')
 
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create Car</h1>
+                        <h1>Add Car</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -22,7 +22,7 @@
                     <div class="col-12">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Create a New Car</h3>
+                                <h3 class="card-title">Add a New Car</h3>
                             </div>
                             @include('templates.errors')
                             <form role="form" action="{{ route('admin.cars.store') }}" method="post" enctype="multipart/form-data">
@@ -175,7 +175,7 @@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-success btn-block">Create Car</button>
+                                    <button type="submit" class="btn btn-success btn-block">Add Car</button>
                                 </div>
                             </form>
                         </div>

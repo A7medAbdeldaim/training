@@ -1,5 +1,5 @@
 @extends('templates.admin_layout')
-@section('title', 'Create Category')
+@section('title', 'Add Category')
 
 @section('content')
 
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create Category</h1>
+                        <h1>Add Category</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -22,7 +22,7 @@
                     <div class="col-12">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Create a New Category</h3>
+                                <h3 class="card-title">Add a New Category</h3>
                             </div>
                             @include('templates.errors')
                             <form role="form" action="{{ route('admin.categories.store') }}" method="post">
@@ -48,7 +48,7 @@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-success btn-block">Create Category</button>
+                                    <button type="submit" class="btn btn-success btn-block">Add Category</button>
                                 </div>
                             </form>
                         </div>
