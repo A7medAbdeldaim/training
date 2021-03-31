@@ -49,8 +49,8 @@
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control"
                                                 name="status" required>
-                                            <option {{ $car->status ? 'selected' : '' }}selected value="1">Rented</option>
-                                            <option {{ $car->status == 0 ? 'selected' : '' }}selected value="0">Available for Rent</option>
+                                            <option {{ $car->status ? 'selected' : '' }} value="1">Rented</option>
+                                            <option {{ $car->status == 0 ? 'selected' : '' }} value="0">Available for Rent</option>
                                         </select>
                                     </div>
 
