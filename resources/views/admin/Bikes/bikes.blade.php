@@ -54,7 +54,7 @@
                                             <td>{{ $row->model }}</td>
                                             <td>
                                                 @if ($row->status == 1)
-                                                    <a href="#" data-toggle="modal" class="btn btn-success btn-block">Rent</a>
+                                                    <a href="#" data-toggle="modal" class="btn btn-success btn-block">Available</a>
                                                 @else
                                                     <a href="#" class="btn btn-primary btn-block">Rented</a>
                                                 @endif
