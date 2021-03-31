@@ -77,7 +77,7 @@
                                         <label for="image">Image</label>
                                         <input type="file" id="image" class="form-control"
                                                name="image"
-                                               value="{{$bike->image}}" required>
+                                               value="{{$bike->image}}">
                                     </div>
 
                                     <div class="form-group">
