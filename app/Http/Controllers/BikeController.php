@@ -45,13 +45,20 @@ class BikeController extends Controller
     }
 
     public function update(Request $request, $id) {
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = $file->store('bikes', ['disk' => 'public']);
+        }
+
+        $request = $request->except('_token', 'image');
+
         $bike = Bike::find($id);
 
         if (!$bike) {
             abort(404);
         }
 
-        $bike->update($request->all());
+        $bike->update($request + ['image' => $path ?? '', 'user_id' => auth()->id()]);
 
         return redirect()->route('admin.bikes.all')->with(['status' => 'success', 'message' => 'Bike Edited Successfully']);
     }

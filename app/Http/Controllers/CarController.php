@@ -46,13 +46,20 @@ class CarController extends Controller
     }
 
     public function update(Request $request, $id) {
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file_path = $file->store('cars', ['disk' => 'public']);
+        }
+
+        $request = $request->except('_token', 'image');
+
         $car = Car::find($id);
 
         if (!$car) {
             abort(404);
         }
 
-        $car->update($request->all());
+        $car->update($request + ['image' => $file_path ?? '', 'user_id' => auth()->id()]);
 
         return redirect()->route('admin.cars.all')->with(['status' => 'success', 'message' => 'Car Edited Successfully']);
     }
