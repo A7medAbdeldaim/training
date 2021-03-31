@@ -62,7 +62,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => 'auth'], functio
     Route::post('bikes/store', [BikeController::class, 'store'])->name('bikes.store');
     Route::get('bikes/edit/{id}', [BikeController::class, 'edit'])->name('bikes.edit');
     Route::patch('bikes/update/{id}', [BikeController::class, 'update'])->name('bikes.update');
-    Route::get('bikes/delete/{id}', [UsersController::class, 'destroy'])->name('bikes.destroy');
+    Route::get('bikes/delete/{id}', [BikeController::class, 'destroy'])->name('bikes.destroy');
 
     Route::get('cars', [CarController::class, 'get'])->name('cars.all');
     Route::get('cars/create', [CarController::class, 'create'])->name('cars.create');

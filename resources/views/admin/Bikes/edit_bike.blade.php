@@ -50,7 +50,7 @@
                                         <select id="status" class="form-control"
                                                 name="status" required>
                                             <option {{ $bike->status ? 'selected' : '' }}selected value="1">Rented</option>
-                                            <option {{ $bike->status == 0 ? 'selected' : '' }}selected value="1">Available for Rent</option>
+                                            <option {{ $bike->status == 0 ? 'selected' : '' }}selected value="0">Available for Rent</option>
                                         </select>
                                     </div>
 

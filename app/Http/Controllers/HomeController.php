@@ -89,10 +89,10 @@ class HomeController extends Controller
     public function category($category_id, $type) {
         if ($type == 'car') {
             $category = Category::where('id', $category_id)->where('type', 1)->first();
-            $data = Car::where('category_id', $category_id)->where('status', 0)->get();
+            $data = Car::where('category_id', $category_id)->get();
         } elseif ($type == 'bike') {
             $category = Category::where('id', $category_id)->where('type', 0)->first();
-            $data = Bike::where('category_id', $category_id)->where('status', 0)->get();
+            $data = Bike::where('category_id', $category_id)->get();
         }
         return view('category', compact('category', 'data', 'type'));
     }
