@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CBRS | @yield('title', 'Home Page')</title>
+    <title>Library | @yield('title', 'Home Page')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,6 +29,14 @@
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
+            <li class="nav-item">
+                <form method="post" action="{{ route('admin.logout') }}">
+                    @csrf
+                    <button class="nav-link" style="background: transparent;border:none">
+                        Logout
+                    </button>
+                </form>
+            </li>
         </ul>
 
     </nav>
@@ -38,7 +46,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('home') }}" class="brand-link">
-            <span class="brand-text font-weight-light">CBRS</span>
+            <span class="brand-text font-weight-light">Library</span>
         </a>
 
         <!-- Sidebar -->
@@ -60,33 +68,84 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    @if (auth()->user()->rank == 2)
+                    @if (auth('admins')->check())
                         <li class="nav-item">
                             <a href="{{ route('admin.users') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>Users</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.librarians') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Librarians</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.admins') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Admins</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.libraries') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Libraries</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.books') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Books</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.payment_requests') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Payment Requests</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.rent_requests') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Rent Requests</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.book_requests') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Book Requests</p>
+                            </a>
+                        </li>
+
+                    @elseif (auth('librarians')->check())
+                        <li class="nav-item">
+                            <a href="{{ route('librarian.books') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Books</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('librarian.payment_requests') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Payment Requests</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('librarian.rent_requests') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Rent Requests</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('librarian.book_requests') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Book Requests</p>
+                            </a>
+                        </li>
                     @endif
 
-                    <li class="nav-item">
-                        <a href="{{ route('admin.categories.all') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>Categories</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.bikes.all') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>Bikes</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.cars.all') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>Cars</p>
-                        </a>
-                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

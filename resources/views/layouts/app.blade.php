@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>CBRS | @yield('title', 'Home Page')</title>
+    <title>Library | @yield('title', 'Home Page')</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -43,11 +43,11 @@
 
         <nav class="nav-menu">
             <ul>
-                @auth
+                @if (auth('users')->check())
                     <li class="">
                         <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
-                            {{ auth()->user()->name }}
+                            {{ auth('users')->user()->name }}
                         </a>
                         <div class="dropdown-menu">
                             <a class="text-dark" href="{{ route('profile') }}">Profile</a>
@@ -72,7 +72,7 @@
         </nav>
 
         <div class="logo">
-            <h1 class="text-light"><a href="{{ route('home') }}">CBRS</a></h1>
+            <h1 class="text-light"><a href="{{ route('home') }}">Library</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="{{ asset('new/img/logo.png') }}" alt="" class="img-fluid"></a>-->
         </div>
@@ -94,22 +94,9 @@
                 </li>
                 <li class="drop-down"><a href="#">Categories</a>
                     <ul>
-                        <li class="drop-down"><a href="#">Cars</a>
-                            <ul>
-                                @foreach(App\Models\Category::where('type', 1)->get() as $category)
-
-                                    <li><a href="{{ route('category', ['category_id' => $category->id, 'type' => 'car']) }}">{{ $category->name}}</a></li>
-                                @endforeach
-                            </ul>
-                        </li>
-                        <li class="drop-down"><a href="#">Bikes</a>
-                            <ul>
-                                @foreach(App\Models\Category::where('type', 0)->get() as $category)
-
-                                    <li><a href="{{ route('category', ['category_id' => $category->id, 'type' => 'bike']) }}">{{ $category->name}}</a></li>
-                                @endforeach
-                            </ul>
-                        </li>
+                        @foreach(App\Models\Library::get() as $library)
+                            <li><a href="{{ route('libraries.show', ['id' => $library->id]) }}">{{ $library->name}}</a></li>
+                        @endforeach
                     </ul>
                 </li>
             </ul>
@@ -126,8 +113,8 @@
             <!-- Slide 1 -->
             <div class="carousel-item active">`
                 <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Welcome to <span>CBRS</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Best Bikes and Cars Rental System</p>
+                    <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Library</span></h2>
+                    <p class="animate__animated fanimate__adeInUp">Borrow and Buy Books</p>
                     <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
                 </div>
             </div>
@@ -180,12 +167,12 @@
 <!-- ======= Footer ======= -->
 <footer id="footer">
     <div class="container">
-        <h3>CBRS</h3>
+        <h3>Library</h3>
         <div class="social-links">
-            <a href="https://twitter.com/Cbrs1111" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="https://www.instagram.com/cbrs.1111/" class="instagram" target="_blank"><i
+            <a href="https://twitter.com/Library1111" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.instagram.com/Library.1111/" class="instagram" target="_blank"><i
                     class="bx bxl-instagram"></i></a>
-{{--            <a href="mailto:cbrs.1111@gmail.com" class="google-plus" target="_blank"><i class="bx bxl-mail-send"></i></a>--}}
+{{--            <a href="mailto:Library.1111@gmail.com" class="google-plus" target="_blank"><i class="bx bxl-mail-send"></i></a>--}}
         </div>
         <div class="copyright">
             &copy; Copyright. All Rights Reserved

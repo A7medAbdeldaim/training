@@ -42,16 +42,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="rank">User Type</label>
-                                        <select id="rank" class="form-control"
-                                               name="rank" required>
-{{--                                            <option value="0">Seller</option>--}}
-{{--                                            <option value="1">Buyer</option>--}}
-                                            <option value="2">Admin</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
                                         <label for="password">User Password</label>
                                         <input type="password" class="form-control" id="password"
                                                placeholder="User Password" name="password"

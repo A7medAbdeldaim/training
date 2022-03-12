@@ -13,7 +13,7 @@
                         <div class="col-md-12">
                             <div class="form-block">
                                 <div class="mb-4">
-                                    <h3>Sign up in <strong>CBRS</strong></h3>
+                                    <h3>Sign up in <strong>Library</strong></h3>
                                 </div>
                                 @include('layouts.errors')
 
@@ -39,15 +39,6 @@
                                     <div class="form-group last mb-4">
                                         <label for="password">Re-Enter Password</label>
                                         <input type="password" class="form-control" id="password" name="password_confirmation">
-                                    </div>
-
-                                    <div class="form-group last mb-4">
-                                        <label for="rank" style="top: 0">User Type</label>
-                                        <select id="rank" name="rank" class="form-control">
-{{--                                            <option selected disabled></option>--}}
-{{--                                            <option value="1">Seller</option>--}}
-                                            <option value="2" selected>Buyer</option>
-                                        </select>
                                     </div>
 
                                     <div class="d-flex mb-5 align-items-center">

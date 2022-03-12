@@ -21,13 +21,13 @@
                         <label for="name">Name</label>
                         <input type="text" id="name" class="form-control"
                                placeholder="Enter User Name" name="name"
-                               value="{{ auth()->user()->name }}" required>
+                               value="{{ auth('users')->user()->name }}" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" class="form-control"
                                placeholder="Enter User Email" name="email"
-                               value="{{ auth()->user()->email }}" required>
+                               value="{{ auth('users')->user()->email }}" required>
                     </div>
 
                     <div class="form-group">

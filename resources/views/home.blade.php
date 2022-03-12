@@ -16,15 +16,12 @@
             <div class="row content" data-aos="fade-up">
                 <div class="col-lg-6">
                     <p>
-                        The website works to facilitate the rent of bikes and cars through the web site.
-                        Bicycle's or car's owners can add their bikes or cars and add price of rent for each bikes or cars.
-                        Our website provide this service (rent of bikes or cars) for users which will use our web site, each user before rent any bikes or cars will know all information about this bikes or cars which are (model of bikes or cars, price of rent/hour,
+
                     </p>
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0">
                     <p>
-                         available or not, bicycle's owner name or car's owner name).
-                        Our website provide this service for our users which users can search by area then our website will appear all available cars or bikes to rent.
+
                     </p>
                     <a href="{{ route('about') }}" class="btn-learn-more">Learn More</a>
                 </div>
@@ -32,35 +29,6 @@
 
         </div>
     </section><!-- End About Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-        <div class="container">
-
-            <div class="section-title" data-aos="zoom-out">
-                <h2>Services</h2>
-                <p>What we do offer</p>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="icon-box" data-aos="zoom-in-left">
-                        <div class="icon"><i class="las la-basketball-ball" style="color: #ff689b;"></i></div>
-                        <h4 class="title"><a href="">Cars Rental</a></h4>
-                        <p class="description">Allow the people to rental there’s car and bikes</p>
-                    </div>
-                </div>
-                <div class="col-md-6 mt-5 mt-md-0">
-                    <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="100">
-                        <div class="icon"><i class="las la-book" style="color: #e9bf06;"></i></div>
-                        <h4 class="title"><a href="">Bikes Rental</a></h4>
-                        <p class="description">website cost effective and innovative To help the customer And provide a helpful service</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section><!-- End Services Section -->
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
@@ -71,36 +39,16 @@
                 <p>Latest Coming</p>
             </div>
 
-            <ul id="portfolio-flters" class="d-flex justify-content-end" data-aos="fade-up">
-                <li data-filter="*" class="filter-active">All</li>
-                <li data-filter=".filter-car2">Cars</li>
-                <li data-filter=".filter-bike2">Bikes</li>
-            </ul>
-
             <div class="row portfolio-container" data-aos="fade-up">
-                @foreach($cars as $car)
+                @foreach($books as $book)
                     <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
-                        <a href="{{ route('cars.show', $car->id) }}">
+                        <a href="{{ route('books.show', $book->id) }}">
                             <div class="portfolio-img">
-                                <img src="{{ $car->image }}" class="img-fluid" alt="">
+                                <img src="{{ $book->image }}" class="img-fluid" alt="">
                             </div>
                             <div class="portfolio-info">
-                                <h4>{{ $car->name }}</h4>
-                                <p>{{ \Illuminate\Support\Str::limit($car->description, 50) }}</p>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-
-                @foreach($bikes as $bike)
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-bike2">
-                        <a href="{{ route('bikes.show', $bike->id) }}">
-                            <div class="portfolio-img">
-                                <img src="{{ $bike->image }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>{{ $bike->name }}</h4>
-                                <p>{{ \Illuminate\Support\Str::limit($bike->description, 50) }}</p>
+                                <h4>{{ $book->name }}</h4>
+                                <p>{{ \Illuminate\Support\Str::limit($book->description_en, 50) }}</p>
                             </div>
                         </a>
                     </div>
@@ -125,19 +73,19 @@
                         <div class="address">
                             <i class="icofont-google-map"></i>
                             <h4>Location:</h4>
-                            <p>Military City, Ahad Rafidah 62415, Saudi Arabia</p>
+                            <p>, Saudi Arabia</p>
                         </div>
 
                         <div class="email">
                             <i class="icofont-envelope"></i>
                             <h4>Email:</h4>
-                            <p>Ebtisam.moh101@gmail.com</p>
+                            <p>@gmail.com</p>
                         </div>
 
                         <div class="phone">
                             <i class="icofont-phone"></i>
                             <h4>Call:</h4>
-                            <p>+966 0563519542</p>
+                            <p>+966 </p>
                         </div>
 
                     </div>

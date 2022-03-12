@@ -38,7 +38,6 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Name</th>
-                                        <th>Role</th>
                                         <th>Date</th>
                                         <th>Control</th>
                                     </tr>
@@ -48,7 +47,6 @@
                                         <tr>
                                             <td>{{ (++$k) }}</td>
                                             <td>{{ $user->name }}</td>
-                                            <td>{{ $user->rank == 0 ? 'Seller' : ($user->rank == 1 ? 'Buyer' : 'Admin')  }}</td>
                                             <td>{{ \Carbon\Carbon::parse($user->created_at)->format('M d, Y') }}</td>
                                             <td>
                                                 <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>

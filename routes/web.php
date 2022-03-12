@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\AdminsController;
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\BookRequestsController;
+use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\Admin\LibrariansController;
+use App\Http\Controllers\Admin\LibrariesController;
+use App\Http\Controllers\Admin\PaymentRequestsController;
+use App\Http\Controllers\Admin\RentRequestsController;
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,51 +33,92 @@ Route::post('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::post('/profile', [HomeController::class, 'profile_post'])->name('profile.edit');
-Route::get('/category/{category_id}/{type}', [HomeController::class, 'category'])->name('category');
+
+Route::get('/library/{id}', [LibraryController::class, 'show'])->name('libraries.show');
+Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
+
+Route::group(['middleware' => 'auth:users'], function() {
+    Route::post('/books/{id}/request_book', [BookController::class, 'request_book'])->name('books.request_book');
+    Route::post('/books/{id}/rent_book', [BookController::class, 'rent_book'])->name('books.rent_book');
+    Route::post('/books/{id}/buy_book', [BookController::class, 'buy_book'])->name('books.buy_book');
+});
 
 Route::post('contact-us', [HomeController::class, 'contact'])->name('contact');
 
-Route::get('/bikes', [BikeController::class, 'index'])->name('bikes.all');
-Route::get('/bikes/show/{id}', [BikeController::class, 'show'])->name('bikes.show');
-Route::post('/bikes/rent/{id}', [BikeController::class, 'rent'])->name('bikes.rent');
-Route::get('/bikes/create', [BikeController::class, 'create'])->name('bikes.create');
-Route::get('/bikes/store', [BikeController::class, 'store'])->name('bikes.store');
+Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('showLoginForm');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-Route::get('/cars', [CarController::class, 'index'])->name('cars.all');
-Route::get('/cars/show/{id}', [CarController::class, 'show'])->name('cars.show');
-Route::post('/cars/rent/{id}', [CarController::class, 'rent'])->name('cars.rent');
-Route::get('/cars/create', [CarController::class, 'create'])->name('cars.create');
-Route::get('/cars/store', [CarController::class, 'store'])->name('cars.store');
+    Route::group(['middleware' => 'auth:admins'], function(){
 
+        Route::get('/', [UsersController::class, 'index'])->name('users');
+        Route::get('/users', [UsersController::class, 'index'])->name('users');
+        Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
+        Route::post('users/store', [UsersController::class, 'store'])->name('users.store');
+        Route::get('users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+        Route::patch('users/update/{id}', [UsersController::class, 'update'])->name('users.update');
+        Route::get('users/delete/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 
-Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => 'auth'], function(){
-    Route::get('/', [CategoryController::class, 'get'])->name('admin');
-    Route::get('users', [UsersController::class, 'index'])->name('users');
-    Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
-    Route::post('users/store', [UsersController::class, 'store'])->name('users.store');
-    Route::get('users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
-    Route::patch('users/update/{id}', [UsersController::class, 'update'])->name('users.update');
-    Route::get('users/delete/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+        Route::get('/librarians', [LibrariansController::class, 'index'])->name('librarians');
+        Route::get('librarians/create', [LibrariansController::class, 'create'])->name('librarians.create');
+        Route::post('librarians/store', [LibrariansController::class, 'store'])->name('librarians.store');
+        Route::get('librarians/edit/{id}', [LibrariansController::class, 'edit'])->name('librarians.edit');
+        Route::patch('librarians/update/{id}', [LibrariansController::class, 'update'])->name('librarians.update');
+        Route::get('librarians/delete/{id}', [LibrariansController::class, 'destroy'])->name('librarians.destroy');
 
-    Route::get('categories', [CategoryController::class, 'get'])->name('categories.all');
-    Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
-    Route::post('categories/store', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('categories/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
-    Route::patch('categories/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
-    Route::get('categories/delete/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+        Route::get('/admins', [AdminsController::class, 'index'])->name('admins');
+        Route::get('admins/create', [AdminsController::class, 'create'])->name('admins.create');
+        Route::post('admins/store', [AdminsController::class, 'store'])->name('admins.store');
+        Route::get('admins/edit/{id}', [AdminsController::class, 'edit'])->name('admins.edit');
+        Route::patch('admins/update/{id}', [AdminsController::class, 'update'])->name('admins.update');
+        Route::get('admins/delete/{id}', [AdminsController::class, 'destroy'])->name('admins.destroy');
 
-    Route::get('bikes', [BikeController::class, 'get'])->name('bikes.all');
-    Route::get('bikes/create', [BikeController::class, 'create'])->name('bikes.create');
-    Route::post('bikes/store', [BikeController::class, 'store'])->name('bikes.store');
-    Route::get('bikes/edit/{id}', [BikeController::class, 'edit'])->name('bikes.edit');
-    Route::patch('bikes/update/{id}', [BikeController::class, 'update'])->name('bikes.update');
-    Route::get('bikes/delete/{id}', [BikeController::class, 'destroy'])->name('bikes.destroy');
+        Route::get('/libraries', [LibrariesController::class, 'index'])->name('libraries');
+        Route::get('libraries/create', [LibrariesController::class, 'create'])->name('libraries.create');
+        Route::post('libraries/store', [LibrariesController::class, 'store'])->name('libraries.store');
+        Route::get('libraries/edit/{id}', [LibrariesController::class, 'edit'])->name('libraries.edit');
+        Route::patch('libraries/update/{id}', [LibrariesController::class, 'update'])->name('libraries.update');
+        Route::get('libraries/delete/{id}', [LibrariesController::class, 'destroy'])->name('libraries.destroy');
 
-    Route::get('cars', [CarController::class, 'get'])->name('cars.all');
-    Route::get('cars/create', [CarController::class, 'create'])->name('cars.create');
-    Route::post('cars/store', [CarController::class, 'store'])->name('cars.store');
-    Route::get('cars/edit/{id}', [CarController::class, 'edit'])->name('cars.edit');
-    Route::patch('cars/update/{id}', [CarController::class, 'update'])->name('cars.update');
-    Route::get('cars/delete/{id}', [CarController::class, 'destroy'])->name('cars.destroy');
+        Route::get('/books', [BooksController::class, 'index'])->name('books');
+        Route::get('books/create', [BooksController::class, 'create'])->name('books.create');
+        Route::post('books/store', [BooksController::class, 'store'])->name('books.store');
+        Route::get('books/edit/{id}', [BooksController::class, 'edit'])->name('books.edit');
+        Route::patch('books/update/{id}', [BooksController::class, 'update'])->name('books.update');
+        Route::get('books/delete/{id}', [BooksController::class, 'destroy'])->name('books.destroy');
+
+        Route::get('/book_requests', [BookRequestsController::class, 'index'])->name('book_requests');
+
+        Route::get('/payment_requests', [PaymentRequestsController::class, 'index'])->name('payment_requests');
+
+        Route::get('/rent_requests', [RentRequestsController::class, 'index'])->name('rent_requests');
+
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    });
 });
 
+Route::group(['prefix'=>'librarian','as'=>'librarian.'], function(){
+    Route::get('/login', [Librarian\Auth\LoginController::class, 'showLoginForm'])->name('showLoginForm');
+    Route::post('/login', [Librarian\Auth\LoginController::class, 'login'])->name('login');
+
+    Route::group(['middleware' => 'auth:librarians'], function(){
+
+        Route::get('/', [Librarian\BooksController::class, 'index'])->name('books');
+        Route::get('/books', [Librarian\BooksController::class, 'index'])->name('books');
+        Route::get('books/create', [Librarian\BooksController::class, 'create'])->name('books.create');
+        Route::post('books/store', [Librarian\BooksController::class, 'store'])->name('books.store');
+        Route::get('books/edit/{id}', [Librarian\BooksController::class, 'edit'])->name('books.edit');
+        Route::patch('books/update/{id}', [Librarian\BooksController::class, 'update'])->name('books.update');
+        Route::get('books/delete/{id}', [Librarian\BooksController::class, 'destroy'])->name('books.destroy');
+
+        Route::get('/book_requests', [Librarian\BookRequestsController::class, 'index'])->name('book_requests');
+
+        Route::get('/payment_requests', [Librarian\PaymentRequestsController::class, 'index'])->name('payment_requests');
+
+        Route::get('/rent_requests', [Librarian\RentRequestsController::class, 'index'])->name('rent_requests');
+
+        Route::post('/logout', [Librarian\Auth\LoginController::class, 'logout'])->name('logout');
+
+    });
+});

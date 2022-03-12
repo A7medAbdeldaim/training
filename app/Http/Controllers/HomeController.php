@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Contact;
-use App\Models\Bike;
-use App\Models\Car;
-use App\Models\Category;
+use App\Models\Book;
+use App\Models\Library;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -29,10 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cars = Car::where('status', 1)->limit(6)->get();
-
-        $bikes = Bike::where('status', 1)->limit(6)->get();
-        return view('home', compact('cars', 'bikes'));
+        $books = Book::all();
+        return view('home', compact('books'));
     }
 
     public function about() {
@@ -44,18 +41,18 @@ class HomeController extends Controller
 
         if ($request->has('type')) {
             if ($request->type == 1) {
-                $type = 'car';
-                $data = Car::where('name', 'like', "%$search%")->get();
+                $type = 'Book';
+                $books = Book::where('name_en', 'like', "%$search%")->get();
             } else {
-                $type = 'bike';
-                $data = Bike::where('name', 'like', "%$search%")->get();
+                $type = 'Library';
+                $books = Library::where('name_en', 'like', "%$search%")->get();
             }
         } else {
-            $type = 'car';
-            $data = Car::where('name', 'like', "%$search%")->get();
+            $type = 'Book';
+            $books = Book::where('name_en', 'like', "%$search%")->get();
         }
 
-        return view('search', compact('search', 'data', 'type'));
+        return view('search', compact('search', 'books', 'type'));
     }
 
     public function profile(){

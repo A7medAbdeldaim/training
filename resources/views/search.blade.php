@@ -21,8 +21,8 @@
 
                     <div class="col-4 form-group">
                         <select name="type" class="form-control w-100">
-                            <option value="1">Car</option>
-                            <option value="2">Bike</option>
+                            <option value="1">Book Name</option>
+                            <option value="2">Library Name</option>
                         </select>
                     </div>
 
@@ -35,19 +35,15 @@
             </div>
 
             <div class="row content">
-                @foreach($data as $row)
+                @foreach($books as $book)
                     <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
-                        @if ($type == 'car')
-                            <a href="{{ route('cars.show', $row->id) }}">
-                        @else
-                            <a href="{{ route('bikes.show', $row->id) }}">
-                        @endif
+                        <a href="{{ route('books.show', $book->id) }}">
                             <div class="portfolio-img">
-                                <img src="{{ $row->image }}" class="img-fluid" alt="">
+                                <img src="{{ $book->image }}" class="img-fluid" alt="">
                             </div>
                             <div class="portfolio-info">
-                                <h4>{{ $row->name }}</h4>
-                                <p>{{ \Illuminate\Support\Str::limit($row->description, 50) }}</p>
+                                <h4>{{ $book->name }}</h4>
+                                <p>{{ \Illuminate\Support\Str::limit($book->description_en, 50) }}</p>
                             </div>
                         </a>
                     </div>

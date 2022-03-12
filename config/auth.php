@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'users' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'librarians' => [
+            'driver' => 'session',
+            'provider' => 'librarians',
+        ],
+        'admins' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -70,7 +82,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        'librarians' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Librarian::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -95,6 +114,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'librarians' => [
+            'provider' => 'librarians',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

@@ -16,7 +16,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    <title>@yield('title', 'CBRS')</title>
+    <title>@yield('title', 'Library')</title>
 </head>
 <body>
 
