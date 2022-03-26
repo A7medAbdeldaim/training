@@ -2,138 +2,253 @@
 @section('title', 'Home Page')
 
 @section('content')
-    <!-- MENU SECTION END-->
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <!-- section -->
+    <div class="section tabbar_menu">
         <div class="container">
-
-            <div class="section-title" data-aos="zoom-out">
-                <h2>About</h2>
-                <p>Who we are</p>
-            </div>
-
-            <div class="row content" data-aos="fade-up">
-                <div class="col-lg-6">
-                    <p>
-
-                    </p>
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0">
-                    <p>
-
-                    </p>
-                    <a href="{{ route('about') }}" class="btn-learn-more">Learn More</a>
+            <div class="row justify-content-md-center">
+                <div class="col-md-6">
+                    <div class="tab_menu">
+                        <ul>
+                            <li><a href="#"><span class="icon"><img src="{{ asset('images/i5.png') }}" alt="#" /></span><span>Location</span></a></li>
+                            <li><a href="#"><span class="icon"><img src="{{ asset('images/i6.png') }}" alt="#" /></span><span>Call us</span></a></li>
+                            <li><a href="#"><span class="icon"><img src="{{ asset('images/i7.png') }}" alt="#" /></span><span>Email</span></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+    </div>
+    <!-- end section -->
+    <!-- section -->
+    <div class="section margin-top_50">
         <div class="container">
-
-            <div class="section-title" data-aos="zoom-out">
-                <h2>Rental</h2>
-                <p>Latest Coming</p>
+            <div class="row">
+                <div class="col-md-6 layout_padding_2">
+                    <div class="full">
+                        <div class="heading_main text_align_left">
+                            <h2><span>Welcome To</span> Talent Rise</h2>
+                        </div>
+                        <div class="full">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                        </div>
+                        <div class="full">
+                            <a class="hvr-radial-out button-theme" href="#">About more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="full">
+                        <img src="{{ asset('images/img2.png') }}" alt="#" />
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+    <!-- end section -->
+    <!-- section -->
+    <div class="section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                            <h2><span>Popular </span>Talents</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <img class="img-responsive" src="{{ asset('images/p1.png') }}" alt="#" />
+                        <h4>Financial Accounting</h4>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <img class="img-responsive" src="{{ asset('images/p2.png') }}" alt="#" />
+                        <h4>Managerial Accounting</h4>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <img class="img-responsive" src="{{ asset('images/p3.png') }}" alt="#" />
+                        <h4>Intermediate Accounting</h4>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <img class="img-responsive" src="{{ asset('images/p1.png') }}" alt="#" />
+                        <h4>Financial Accounting</h4>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <img class="img-responsive" src="{{ asset('images/p2.png') }}" alt="#" />
+                        <h4>Managerial Accounting</h4>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <img class="img-responsive" src="{{ asset('images/p3.png') }}" alt="#" />
+                        <h4>Intermediate Accounting</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+    <!-- section -->
+    <div class="section margin-top_50 silver_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="full float-right_img">
+                        <img src="{{ asset('images/img6.png') }}" alt="#" />
+                    </div>
+                </div>
+                <div class="col-md-6 layout_padding_2">
+                    <div class="full">
+                        <div class="heading_main text_align_left">
+                            <h2><span>Apply for Admission</span></h2>
+                        </div>
+                        <div class="full">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                        </div>
+                        <div class="full">
+                            <a class="hvr-radial-out button-theme" href="#">Apply</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
 
-            <div class="row portfolio-container" data-aos="fade-up">
-                @foreach($books as $book)
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-car2">
-                        <a href="{{ route('books.show', $book->id) }}">
-                            <div class="portfolio-img">
-                                <img src="{{ $book->image }}" class="img-fluid" alt="">
+    <!-- section -->
+    <div class="section layout_padding padding_bottom-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                            <h2><span>News</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="full blog_img_popular">
+                                            <img class="img-responsive" src="{{ asset('images/img9.png') }}" alt="#" />
+                                            <h4>Technology</h4>
+                                            <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="full blog_img_popular">
+                                            <img class="img-responsive" src="{{ asset('images/img8.png') }}" alt="#" />
+                                            <h4>Education</h4>
+                                            <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="portfolio-info">
-                                <h4>{{ $book->name }}</h4>
-                                <p>{{ \Illuminate\Support\Str::limit($book->description_en, 50) }}</p>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="full blog_img_popular">
+                                            <img class="img-responsive" src="{{ asset('images/img9.png') }}" alt="#" />
+                                            <h4>Technology</h4>
+                                            <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="full blog_img_popular">
+                                            <img class="img-responsive" src="{{ asset('images/img8.png') }}" alt="#" />
+                                            <h4>Education</h4>
+                                            <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
                         </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+
                     </div>
-                @endforeach
+                </div>
+
             </div>
         </div>
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+    </div>
+    <!-- end section -->
+    <!-- section -->
+    <div class="section layout_padding padding_bottom-0">
         <div class="container">
-
-            <div class="section-title" data-aos="zoom-out">
-                <h2>Contact</h2>
-                <p>Contact Us</p>
-            </div>
-
-            <div class="row mt-5">
-
-                <div class="col-lg-4" data-aos="fade-right">
-                    <div class="info">
-                        <div class="address">
-                            <i class="icofont-google-map"></i>
-                            <h4>Location:</h4>
-                            <p>, Saudi Arabia</p>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                            <h2><span>Contact</span></h2>
                         </div>
-
-                        <div class="email">
-                            <i class="icofont-envelope"></i>
-                            <h4>Email:</h4>
-                            <p>@gmail.com</p>
-                        </div>
-
-                        <div class="phone">
-                            <i class="icofont-phone"></i>
-                            <h4>Call:</h4>
-                            <p>+966 </p>
-                        </div>
-
                     </div>
-
                 </div>
-
-                <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left">
-
-                    <form action="{{ route('contact') }}" method="post" role="form" class="php-email-form">
-                        @csrf
-                        <div class="form-row">
-                            <div class="col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                                       data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
-                                <div class="validate"></div>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <input type="email" class="form-control" name="email" id="email"
-                                       placeholder="Your Email" data-rule="email"
-                                       data-msg="Please enter a valid email"/>
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-                                   data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
-                            <div class="validate"></div>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5" data-rule="required"
-                                      data-msg="Please write something for us" placeholder="Message"></textarea>
-                            <div class="validate"></div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit">Send Message</button>
-                        </div>
-                    </form>
-
-                </div>
-
             </div>
-
         </div>
-    </section><!-- End Contact Section -->
-
+    </div>
+    <!-- end section -->
+    <!-- section -->
+    <div class="section contact_section" style="background:#12385b;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="full float-right_img">
+                        <img src="{{ asset('images/img10.png') }}" alt="#">
+                    </div>
+                </div>
+                <div class="layout_padding col-lg-6 col-md-6 col-sm-12">
+                    <div class="contact_form">
+                        <form action="contact.html">
+                            <fieldset>
+                                <div class="full field">
+                                    <input type="text" placeholder="Your Name" name="your name" />
+                                </div>
+                                <div class="full field">
+                                    <input type="email" placeholder="Email Address" name="Email" />
+                                </div>
+                                <div class="full field">
+                                    <input type="phn" placeholder="Phone Number" name="Phone number" />
+                                </div>
+                                <div class="full field">
+                                    <textarea placeholder="Massage"></textarea>
+                                </div>
+                                <div class="full field">
+                                    <div class="center"><button>Send</button></div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
 @endsection

@@ -22,7 +22,7 @@
                     <div class="col-4 form-group">
                         <select name="type" class="form-control w-100">
                             <option value="1">Book Name</option>
-                            <option value="2">Library Name</option>
+                            <option value="2">Training Name</option>
                         </select>
                     </div>
 

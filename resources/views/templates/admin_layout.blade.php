@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Library | @yield('title', 'Home Page')</title>
+    <title>Training | @yield('title', 'Home Page')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -46,7 +46,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('home') }}" class="brand-link">
-            <span class="brand-text font-weight-light">Library</span>
+            <span class="brand-text font-weight-light">Training</span>
         </a>
 
         <!-- Sidebar -->
@@ -70,15 +70,15 @@
                          with font-awesome or any other icon font library -->
                     @if (auth('admins')->check())
                         <li class="nav-item">
-                            <a href="{{ route('admin.users') }}" class="nav-link">
+                            <a href="{{ route('admin.trainees') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
-                                <p>Users</p>
+                                <p>Trainees</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.librarians') }}" class="nav-link">
+                            <a href="{{ route('admin.trainers') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
-                                <p>Librarians</p>
+                                <p>Trainers</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -88,62 +88,20 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.libraries') }}" class="nav-link">
+                            <a href="{{ route('admin.categories') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
-                                <p>Libraries</p>
+                                <p>Categories</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('admin.books') }}" class="nav-link">
+                            <a href="{{ route('admin.trainings') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
-                                <p>Books</p>
+                                <p>Trainings</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.payment_requests') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Payment Requests</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.rent_requests') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Rent Requests</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.book_requests') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Book Requests</p>
-                            </a>
-                        </li>
+                    @elseif (auth('trainers')->check())
 
-                    @elseif (auth('librarians')->check())
-                        <li class="nav-item">
-                            <a href="{{ route('librarian.books') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Books</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('librarian.payment_requests') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Payment Requests</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('librarian.rent_requests') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Rent Requests</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('librarian.book_requests') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Book Requests</p>
-                            </a>
-                        </li>
                     @endif
 
                 </ul>

@@ -28,8 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
-        return view('home', compact('books'));
+        return view('home');
     }
 
     public function about() {
@@ -103,5 +102,9 @@ class HomeController extends Controller
         ]);
 
         return Mail::to("email@email.com")->send(new Contact($request->all()));
+    }
+
+    public function contact_us(Request $request) {
+        return view('contact');
     }
 }

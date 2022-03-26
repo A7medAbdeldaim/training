@@ -1,200 +1,287 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+<!-- Basic -->
 
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Library | @yield('title', 'Home Page')</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- Favicons -->
-    <link href="{{ asset('new/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('new/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <!-- Site Metas -->
+    <title>@yield('title', 'Rise Talent')</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i') }}"
-        rel="stylesheet">
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="#" />
 
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('new/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('new/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('new/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('new/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('new/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('new/vendor/line-awesome/css/line-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('new/vendor/venobox/venobox.css') }}" rel="stylesheet">
-    <link href="{{ asset('new/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('new/vendor/aos/aos.css') }}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+    <!-- Pogo Slider CSS -->
+    <link rel="stylesheet" href="{{ asset('css/pogo-slider.min.css') }}" />
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
 
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('new/css/style.css') }}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 
-<body>
+<body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
 
-<!-- ======= Header ======= -->
-<header id="header"
-        class="fixed-top d-flex align-items-center {{ request()->routeIs('home') ? 'header-transparent' : '' }} ">
-    <div class="container d-flex justify-content-between">
-
-        <nav class="nav-menu">
-            <ul>
-                @if (auth('users')->check())
-                    <li class="">
-                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                            {{ auth('users')->user()->name }}
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="text-dark" href="{{ route('profile') }}">Profile</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="text-dark" onclick="submit_form()" href="#">Logout</a>
-                        </div>
-                    </li>
-                    <form id="logout_form" class="d-none" method="post" action="{{ route('logout') }}">
-                        @csrf
-                    </form>
-                    <script>
-                        function submit_form() {
-                            document.getElementById('logout_form').submit();
-                        }
-                    </script>
-                @else
-                    <li class=""><a href="{{ route('login') }}">Login</a></li>
-                    <li class=""><a href="{{ route('register') }}">Register</a></li>
-                @endauth
-
-            </ul>
-        </nav>
-
-        <div class="logo">
-            <h1 class="text-light"><a href="{{ route('home') }}">Library</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="{{ asset('new/img/logo.png') }}" alt="" class="img-fluid"></a>-->
-        </div>
-
-        <nav class="nav-menu d-none d-lg-block float-right">
-            <ul>
-                <li>
-                    <form action="{{ route('search') }}" method="post">
-                        @csrf
-                        <div class="input-group" style="border: none">
-                            <div class="form-outline">
-                                <input type="search" name="search" id="form1" class="form-control" style="background: rgba(255,255,255,0.8)"/>
-                            </div>
-                            <button type="submit" class="btn btn-success pl-2 pr-2">
-                                Search
-                            </button>
-                        </div>
-                    </form>
-                </li>
-                <li class="drop-down"><a href="#">Categories</a>
-                    <ul>
-                        @foreach(App\Models\Library::get() as $library)
-                            <li><a href="{{ route('libraries.show', ['id' => $library->id]) }}">{{ $library->name}}</a></li>
-                        @endforeach
-                    </ul>
-                </li>
-            </ul>
-        </nav><!-- .nav-menu -->
-
+<!-- LOADER -->
+<div id="preloader">
+    <div class="loader">
+        <img src="{{ asset('images/loader.gif') }}" alt="#" />
     </div>
-</header><!-- End Header -->
+</div>
+<!-- end loader -->
+<!-- END LOADER -->
+
+<!-- Start header -->
+<header class="top-header">
+    <nav class="navbar header-nav navbar-expand-lg" style="background-color:#4d555e">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('images/5d3c9abaa4512_thumb900.jpg') }}" alt="image"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
+                <ul class="navbar-nav">
+                    <li><a class="nav-link active" style="color: #fff;" href="{{ route('home')}}">Home</a></li>
+                    <li><a class="nav-link" style="color: #fff;" href="{{ route('about')}}">About</a></li>
+                    <li><a class="nav-link" style="color: #fff;" href="{{ route('home')}}">Talents</a></li>
+                    <li><a class="nav-link" style="color: #fff;" href="{{ route('contact_us')}}">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="search-box">
+                <input type="text" class="search-txt" placeholder="Search">
+                <a class="search-btn">
+                    <img src="{{ asset('images/search_icon.png') }}" alt="#" />
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End header -->
 
 @if (request()->routeIs('home'))
-    <section id="hero" class="d-flex flex-column justify-content-end align-items-center"
-             style='background-image: url("{{ asset('images/slider2.jpg') }}"); background-size: cover'>
-        <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
-
-            <!-- Slide 1 -->
-            <div class="carousel-item active">`
-                <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Library</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Borrow and Buy Books</p>
-                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+    <!-- Start Banner -->
+    <div class="ulockd-home-slider">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="pogoSlider" id="js-main-slider">
+                    <div class="pogoSlider-slide" style="background-image:url({{ asset('images/banner_img.png') }});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="slide_text">
+                                        <h3><span span class="theme_color">You only have know one thing</span><br>you can learn anything</h3>
+                                        <h4>Free Educations</h4>
+                                        <br>
+                                        <div class="full center">
+                                            <a class="contact_bt" href="courses.html">Start Learning Talent</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pogoSlider-slide" style="background-image:url({{ asset('images/banner_img2.png') }});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="slide_text">
+                                        <h3><span span class="theme_color">You only have know one thing</span><br>you can learn anything</h3>
+                                        <h4>Free Educations</h4>
+                                        <br>
+                                        <div class="full center">
+                                            <a class="contact_bt" href="courses.html">Start your Talent</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- .pogoSlider -->
             </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-                <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Start Now</h2>
-                    <p class="animate__animated animate__fadeInUp">Start now using the website.</p>
-                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-                </div>
-            </div>
-
-            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-
-            <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-
-        </div>
-
-        <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-             viewBox="0 24 150 28 " preserveAspectRatio="none">
-            <defs>
-                <path id="wave-path"
-                      d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
-            </defs>
-            <g class="wave1">
-                <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)"></use>
-            </g>
-            <g class="wave2">
-                <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)"></use>
-            </g>
-            <g class="wave3">
-                <use xlink:href="#wave-path" x="50" y="9" fill="#fff"></use>
-            </g>
-        </svg>
-
-    </section><!-- End Hero -->
-@endif
-
-<main id="main" style="margin-top: 40px">
-    @yield('content')
-</main>
-
-<!-- ======= Footer ======= -->
-<footer id="footer">
-    <div class="container">
-        <h3>Library</h3>
-        <div class="social-links">
-            <a href="https://twitter.com/Library1111" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="https://www.instagram.com/Library.1111/" class="instagram" target="_blank"><i
-                    class="bx bxl-instagram"></i></a>
-{{--            <a href="mailto:Library.1111@gmail.com" class="google-plus" target="_blank"><i class="bx bxl-mail-send"></i></a>--}}
-        </div>
-        <div class="copyright">
-            &copy; Copyright. All Rights Reserved
         </div>
     </div>
-</footer><!-- End Footer -->
+    <!-- End Banner -->
+@endif
 
-<a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+<div>
+    @yield('content')
+</div>
 
-<!-- Vendor JS Files -->
-<script src="{{ asset('new/vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('new/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('new/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('new/vendor/php-email-form/validate.js') }}"></script>
-<script src="{{ asset('new/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('new/vendor/venobox/venobox.min.js') }}"></script>
-<script src="{{ asset('new/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('new/vendor/aos/aos.js') }}"></script>
+<!-- Start Footer -->
+<footer class="footer-box">
+    <div class="container">
 
-<!-- Template Main JS File -->
-<script src="{{ asset('new/js/main.js') }}"></script>
+        <div class="row">
 
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="footer_blog">
+                    <div class="full margin-bottom_30">
+                        <img src="{{ asset('images/5d3c9abaa4512_thumb900.jpg') }}" alt="#" />
+                    </div>
+                    <div class="full white_fonts">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="footer_blog full white_fonts">
+                    <h3>Newsletter</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+                    <div class="newsletter_form">
+                        <form action="index.html">
+                            <input type="email" placeholder="Your Email" name="#" required />
+                            <button>Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+<!-- End Footer -->
+
+<a href="#" id="scroll-to-top" class="hvr-radial-out"><i class="fa fa-angle-up"></i></a>
+
+<!-- ALL JS FILES -->
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!-- ALL PLUGINS -->
+<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('js/jquery.pogo-slider.min.js') }}"></script>
+<script src="{{ asset('js/slider-index.js') }}"></script>
+<script src="{{ asset('js/smoothscroll.js') }}"></script>
+<script src="{{ asset('js/form-validator.min.js') }}"></script>
+<script src="{{ asset('js/contact-form-script.js') }}"></script>
+<script src="{{ asset('js/isotope.min.js') }}"></script>
+<script src="{{ asset('js/images-loded.min.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
+<script>
+    /* counter js */
+
+    (function ($) {
+        $.fn.countTo = function (options) {
+            options = options || {};
+
+            return $(this).each(function () {
+                // set options for current element
+                var settings = $.extend({}, $.fn.countTo.defaults, {
+                    from:            $(this).data('from'),
+                    to:              $(this).data('to'),
+                    speed:           $(this).data('speed'),
+                    refreshInterval: $(this).data('refresh-interval'),
+                    decimals:        $(this).data('decimals')
+                }, options);
+
+                // how many times to update the value, and how much to increment the value on each update
+                var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                    increment = (settings.to - settings.from) / loops;
+
+                // references & variables that will change with each update
+                var self = this,
+                    $self = $(this),
+                    loopCount = 0,
+                    value = settings.from,
+                    data = $self.data('countTo') || {};
+
+                $self.data('countTo', data);
+
+                // if an existing interval can be found, clear it first
+                if (data.interval) {
+                    clearInterval(data.interval);
+                }
+                data.interval = setInterval(updateTimer, settings.refreshInterval);
+
+                // initialize the element with the starting value
+                render(value);
+
+                function updateTimer() {
+                    value += increment;
+                    loopCount++;
+
+                    render(value);
+
+                    if (typeof(settings.onUpdate) == 'function') {
+                        settings.onUpdate.call(self, value);
+                    }
+
+                    if (loopCount >= loops) {
+                        // remove the interval
+                        $self.removeData('countTo');
+                        clearInterval(data.interval);
+                        value = settings.to;
+
+                        if (typeof(settings.onComplete) == 'function') {
+                            settings.onComplete.call(self, value);
+                        }
+                    }
+                }
+
+                function render(value) {
+                    var formattedValue = settings.formatter.call(self, value, settings);
+                    $self.html(formattedValue);
+                }
+            });
+        };
+
+        $.fn.countTo.defaults = {
+            from: 0,               // the number the element should start at
+            to: 0,                 // the number the element should end at
+            speed: 1000,           // how long it should take to count between the target numbers
+            refreshInterval: 100,  // how often the element should be updated
+            decimals: 0,           // the number of decimal places to show
+            formatter: formatter,  // handler for formatting the value before rendering
+            onUpdate: null,        // callback method for every time the element is updated
+            onComplete: null       // callback method for when the element finishes updating
+        };
+
+        function formatter(value, settings) {
+            return value.toFixed(settings.decimals);
+        }
+    }(jQuery));
+
+    jQuery(function ($) {
+        // custom formatting example
+        $('.count-number').data('countToOptions', {
+            formatter: function (value, options) {
+                return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+            }
+        });
+
+        // start all the timers
+        $('.timer').each(count);
+
+        function count(options) {
+            var $this = $(this);
+            options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+            $this.countTo(options);
+        }
+    });
+</script>
 </body>
 
 </html>

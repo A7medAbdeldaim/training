@@ -26,6 +26,6 @@ class Library extends Model
 
     public function librarian(): BelongsTo
     {
-        return $this->belongsTo(Librarian::class);
+        return $this->belongsTo(Trainer::class);
     }
 }

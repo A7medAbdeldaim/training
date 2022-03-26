@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BorrowRequest;
-use App\Models\User;
+use App\Models\Trainee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use function abort;

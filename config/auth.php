@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'trainees',
     ],
 
     /*
@@ -38,24 +38,24 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
-        ],
-        'users' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-        'librarians' => [
-            'driver' => 'session',
-            'provider' => 'librarians',
+            'provider' => 'trainees',
         ],
         'admins' => [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'trainees' => [
+            'driver' => 'session',
+            'provider' => 'trainees',
+        ],
+        'trainers' => [
+            'driver' => 'session',
+            'provider' => 'trainers',
+        ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'trainees',
             'hash' => false,
         ],
     ],
@@ -78,17 +78,17 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
-        'librarians' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Librarian::class,
-        ],
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'trainees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Trainee::class,
+        ],
+        'trainers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Trainer::class,
         ],
         // 'users' => [
         //     'driver' => 'database',
@@ -112,20 +112,20 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'librarians' => [
-            'provider' => 'librarians',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'trainees' => [
+            'provider' => 'trainees',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'trainers' => [
+            'provider' => 'trainers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

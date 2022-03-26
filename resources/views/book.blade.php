@@ -15,7 +15,7 @@
             <div class="col-4">
                 <img src="{{ $book->image }}" width="100%">
                 <hr>
-                <p><b>Library: </b>{{ $book->library->name }}</p>
+                <p><b>Training: </b>{{ $book->library->name }}</p>
                 @if ($book->stock >= 1)
                     <a data-target="#rent_book" data-toggle="modal" class="btn btn-success btn-block">Borrow</a>
                     <a data-target="#buy_book" data-toggle="modal" class="btn btn-success btn-block">Buy</a>

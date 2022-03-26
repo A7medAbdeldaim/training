@@ -20,6 +20,6 @@ class BorrowRequest extends Model
 
     public function student(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'student_id');
+        return $this->belongsTo(Trainee::class, 'student_id');
     }
 }

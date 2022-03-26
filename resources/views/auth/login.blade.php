@@ -13,7 +13,7 @@
                         <div class="col-md-12">
                             <div class="form-block">
                                 <div class="mb-4">
-                                    <h3>Sign In to <strong>Library</strong></h3>
+                                    <h3>Sign In  <strong>As a Trainee</strong></h3>
                                 </div>
                                 @include('layouts.errors')
 

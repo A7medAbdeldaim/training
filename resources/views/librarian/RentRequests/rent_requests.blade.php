@@ -34,7 +34,7 @@
                                         <th>No.</th>
                                         <th>Student Name</th>
                                         <th>Book Name</th>
-                                        <th>Library Name</th>
+                                        <th>Training Name</th>
                                         <th>Rent From</th>
                                         <th>Rent To</th>
                                         <th>Date</th>

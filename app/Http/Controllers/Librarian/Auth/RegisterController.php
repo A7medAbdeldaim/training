@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Librarian\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Librarian;
+use App\Models\Trainer;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use App\Models\Trainee;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -63,11 +63,11 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\Models\Trainee
      */
     protected function create(array $data)
     {
-        return Librarian::create([
+        return Trainer::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -81,6 +81,6 @@ class RegisterController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('librarians');
+        return Auth::guard('trainers');
     }
 }

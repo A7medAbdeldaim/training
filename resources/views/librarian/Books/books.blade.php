@@ -38,7 +38,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Name</th>
-                                        <th>Library Name</th>
+                                        <th>Training Name</th>
                                         <th>Price</th>
                                         <th>Stock</th>
                                         <th>Control</th>

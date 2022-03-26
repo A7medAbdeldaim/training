@@ -64,7 +64,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="library_id">Library</label>
+                                        <label for="library_id">Training</label>
                                         <select class="form-control" id="library_id"
                                                 name="library_id"
                                                 required>

@@ -1,50 +1,107 @@
-﻿
-/*=============================================================
-    Authour URI: www.binarytheme.com
-    License: Commons Attribution 3.0
-
-    http://creativecommons.org/licenses/by/3.0/
-
-    100% Free To use For Personal And Commercial Use.
-    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
-    ========================================================  */
-
 (function ($) {
-    "use strict";
-    var mainApp = {
-        slide_fun: function () {
+	"use strict";
 
-            $('#carousel-example').carousel({
-                interval:3000 // THIS TIME IS IN MILLI SECONDS
-            })
+	/* ..............................................
+	Loader
+    ................................................. */
 
-        },
-        dataTable_fun: function () {
+	$(window).on('load', function () {
+		$('.preloader').fadeOut();
+		$('#preloader').delay(550).fadeOut('slow');
+		$('body').delay(450).css({ 'overflow': 'visible' });
+	});
 
-            $('#dataTables-example').dataTable();
+	/* ..............................................
+    Navbar Bar
+    ................................................. */
 
-        },
-       
-        custom_fun:function()
-        {
-            /*====================================
-             WRITE YOUR   SCRIPTS  BELOW
-            ======================================*/
+	$('.navbar-nav .nav-link').on('click', function () {
+		var toggle = $('.navbar-toggler').is(':visible');
+		if (toggle) {
+			$('.navbar-collapse').collapse('hide');
+		}
+	});
+
+	/* ..............................................
+    Fixed Menu
+    ................................................. */
+
+	$(window).on('scroll', function () {
+		if ($(window).scrollTop() > 50) {
+			$('.top-header').addClass('fixed-menu');
+		} else {
+			$('.top-header').removeClass('fixed-menu');
+		}
+	});
+
+	/* ..............................................
+    Properties Filter
+    ................................................. */
+	var Container = $('.container');
+	Container.imagesLoaded(function () {
+		var portfolio = $('.properties-menu');
+		portfolio.on('click', 'button', function () {
+			$(this).addClass('active').siblings().removeClass('active');
+			var filterValue = $(this).attr('data-filter');
+			$grid.isotope({
+				filter: filterValue
+			});
+		});
+		var $grid = $('.properties-list').isotope({
+			itemSelector: '.properties-grid'
+		});
+
+	});
+
+	/* ..............................................
+    Gallery
+    ................................................. */
+
+	$(document).ready(function () {
+		$('.popup-gallery').magnificPopup({
+			delegate: 'a',
+			type: 'image',
+			tLoading: 'Loading image #%curr%...',
+			mainClass: 'mfp-img-mobile',
+			gallery: {
+				enabled: true,
+				navigateByImgClick: true,
+				preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+			},
+			image: {
+				tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+				titleSrc: function (item) {
+					return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+				}
+			}
+		});
+	});
+
+	/* ..............................................
+    Scroll To Top
+    ................................................. */
+
+	$(document).ready(function () {
+
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('#scroll-to-top').fadeIn();
+			} else {
+				$('#scroll-to-top').fadeOut();
+			}
+		});
+
+		$('#scroll-to-top').click(function () {
+			$("html, body").animate({
+				scrollTop: 0
+			}, 600);
+			return false;
+		});
+
+	});
 
 
 
 
-        },
-
-    }
-   
-   
-    $(document).ready(function () {
-        mainApp.slide_fun();
-        mainApp.dataTable_fun();
-        mainApp.custom_fun();
-    });
 }(jQuery));
-
 
