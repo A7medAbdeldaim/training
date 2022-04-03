@@ -26,7 +26,9 @@ class Trainer extends Authenticatable
         'email',
         'password',
         'rank',
-        'image'
+        'image',
+        'lat',
+        'lng',
     ];
 
     /**

@@ -1,70 +1,48 @@
-@extends('templates.admin_layout')
-@section('title', 'Add Trainer')
+@extends('layouts.auth_layout')
+@section('title', 'Register')
 
 @section('content')
+    <div class="content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- <div class="col-md-6 order-md-2">
+                  <img src="images/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
+                </div> -->
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="form-block">
+                                <div class="mb-4">
+                                    <h3>Sign up in <strong>Training</strong> as a Trainer</h3>
+                                </div>
+                                @include('layouts.errors')
 
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Add Trainer</h1>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
+                                <form action="{{ route('trainers.register') }}" method="post">
+                                    @csrf
+                                    <div class="form-group first">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" id="username" name="name"
+                                        value="{{ old('name') }}">
 
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card card-success">
-                            <div class="card-header">
-                                <h3 class="card-title">Add a New Trainer</h3>
-                            </div>
-                            @include('templates.errors')
-                            <form role="form" action="{{ route('admin.trainers.store') }}" method="post"
-                                  enctype="multipart/form-data">
-                                @csrf
-                                <div class="card-body col-6">
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" id="name" class="form-control"
-                                               placeholder="Enter Trainer Name" name="name"
-                                               value="{{old('name')}}" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group first">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control"
-                                               placeholder="Enter Trainer Email" name="email"
-                                               value="{{old('email')}}" required>
+                                        <input type="text" class="form-control" id="email" name="email"
+                                        value="{{ old('email') }}">
+
+                                    </div>
+                                    <div class="form-group last mb-4">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="password">Trainer Password</label>
-                                        <input type="password" class="form-control" id="password"
-                                               placeholder="Trainer Password" name="password"
-                                               required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label
-                                            for="confirm_password">Re-enter Trainer Password</label>
-                                        <input type="password" class="form-control" id="confirm_password"
-                                               placeholder="Re-enter Trainer Password"
-                                               name="password_confirmation" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="image">Image</label>
-                                        <input type="file" id="image" class="form-control"
-                                               name="image"
-                                               value="{{old('image')}}" required>
+                                    <div class="form-group last mb-4">
+                                        <label for="password">Re-Enter Password</label>
+                                        <input type="password" class="form-control" id="password" name="password_confirmation">
                                     </div>
 
                                     <p>Select your location on map</p>
-                                    <div id="map"></div>
+                                    <div id="map" style="margin: 0"></div>
 
                                     <script>
 
@@ -123,18 +101,14 @@
                                                placeholder="Enter Trainer Longitude" name="lng"
                                                value="{{old('lng')}}" required>
                                     </div>
-                                </div>
-                                <!-- /.card-body -->
 
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-success btn-block">Add Trainer</button>
-                                </div>
-                            </form>
+                                    <input type="submit" value="SignUp" class="btn btn-pill text-white btn-block btn-primary">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 @endsection
-

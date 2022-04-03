@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Librarian\Auth;
+namespace App\Http\Controllers\Trainer\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;

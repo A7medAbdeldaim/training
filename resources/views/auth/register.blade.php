@@ -46,6 +46,11 @@
                                     </div>
 
                                     <input type="submit" value="SignUp" class="btn btn-pill text-white btn-block btn-primary">
+
+                                    <hr>
+                                    <div class="d-flex mb-5 align-items-center">
+                                        <span class="ml-auto"><a href="{{ route('trainers.showRegistrationForm') }}" class="forgot-pass">Not a Trainee? Register as a Trainer</a></span>
+                                    </div>
                                 </form>
                             </div>
                         </div>

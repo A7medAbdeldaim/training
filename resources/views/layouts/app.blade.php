@@ -64,13 +64,53 @@
                     <li><a class="nav-link" style="color: #fff;" href="{{ route('about')}}">About</a></li>
                     <li><a class="nav-link" style="color: #fff;" href="{{ route('home')}}">Talents</a></li>
                     <li><a class="nav-link" style="color: #fff;" href="{{ route('contact_us')}}">Contact us</a></li>
+                    <li><a class="nav-link" style="color: #fff;" href="{{ route('search')}}">Search</a></li>
+
+                    @if (auth('trainees')->check())
+                        <li class="">
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                                {{ auth('trainees')->user()->name }}
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="text-dark" href="{{ route('profile') }}">Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="text-dark" onclick="submit_form()" href="#">Logout</a>
+                            </div>
+                        </li>
+                        <form id="logout_form" class="d-none" method="post" action="{{ route('logout') }}">
+                            @csrf
+                        </form>
+                        <script>
+                            function submit_form() {
+                                document.getElementById('logout_form').submit();
+                            }
+                        </script>
+                    @elseif (auth('trainers')->check())
+                        <li class="">
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                                {{ auth('trainers')->user()->name }}
+                            </a>
+                            <div class="dropdown-menu" style="left: auto;">
+                                <a class="text-dark" href="{{ route('profile') }}">Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="text-dark" onclick="submit_form()" href="#">Logout</a>
+                            </div>
+                        </li>
+                        <form id="logout_form" class="d-none" method="post" action="{{ route('logout') }}">
+                            @csrf
+                        </form>
+                        <script>
+                            function submit_form() {
+                                document.getElementById('logout_form').submit();
+                            }
+                        </script>
+                    @else
+                        <li><a class="nav-link" style="color: #fff;" href="{{ route('login') }}">Login</a></li>
+                        <li><a class="nav-link" style="color: #fff;" href="{{ route('register') }}">Register</a></li>
+                    @endauth
                 </ul>
-            </div>
-            <div class="search-box">
-                <input type="text" class="search-txt" placeholder="Search">
-                <a class="search-btn">
-                    <img src="{{ asset('images/search_icon.png') }}" alt="#" />
-                </a>
             </div>
         </div>
     </nav>

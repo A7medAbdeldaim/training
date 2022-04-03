@@ -15,6 +15,7 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <title>@yield('title', 'Training')</title>
 </head>

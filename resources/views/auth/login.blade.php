@@ -30,13 +30,13 @@
 
                                     </div>
 
-                                    <div class="d-flex mb-5 align-items-center">
-                                        <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
-                                    </div>
-
                                     <input type="submit" value="Sign In"
                                            class="btn btn-pill text-white btn-block btn-primary">
 
+                                    <hr>
+                                    <div class="d-flex mb-5 align-items-center">
+                                        <span class="ml-auto"><a href="{{ route('trainers.showLoginForm') }}" class="forgot-pass">Not a Trainee? Sign in as a Trainer</a></span>
+                                    </div>
                                 </form>
                             </div>
                         </div>

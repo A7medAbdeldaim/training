@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Librarian;
+namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
 use App\Models\BorrowRequest;
+use App\Models\BuyBook;
 use App\Models\Trainee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,9 +12,9 @@ use function abort;
 use function redirect;
 use function view;
 
-class RentRequestsController extends Controller {
+class PaymentRequestsController extends Controller {
     public function index() {
-        $requests = BorrowRequest::all();
-        return view('librarian.RentRequests.rent_requests', ['requests' => $requests]);
+        $requests = BuyBook::all();
+        return view('librarian.PaymentRequests.payment_requests', ['requests' => $requests]);
     }
 }

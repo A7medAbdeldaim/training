@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Librarian;
+namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;

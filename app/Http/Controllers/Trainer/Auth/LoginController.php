@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Librarian\Auth;
+namespace App\Http\Controllers\Trainer\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME_LIBRARIAN;
+    protected $redirectTo = RouteServiceProvider::HOME_TRAINER;
 
     /**
      * Create a new controller instance.
@@ -42,7 +42,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login_librarian');
+        return view('auth.login_trainer');
     }
 
 
@@ -53,6 +53,6 @@ class LoginController extends Controller
      */
     protected function guard(): StatefulGuard
     {
-        return Auth::guard('librarians');
+        return Auth::guard('trainers');
     }
 }

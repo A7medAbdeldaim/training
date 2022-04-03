@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Librarian\Auth;
+namespace App\Http\Controllers\Trainer\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Trainer;
@@ -44,6 +44,11 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        return view('auth.register_trainer');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -54,7 +59,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:librarians'],
+            'lat' => 'required|string',
+            'lng' => 'required|string',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:trainers'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -70,6 +77,8 @@ class RegisterController extends Controller
         return Trainer::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'lat' => $data['lat'],
+            'lng' => $data['lng'],
             'password' => Hash::make($data['password']),
         ]);
     }

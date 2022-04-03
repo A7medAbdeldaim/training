@@ -24,6 +24,8 @@ class TrainersController extends Controller {
     public function store(Request $request) {
         $request->validate([
             'name' => 'required|string',
+            'lat' => 'required|string',
+            'lng' => 'required|string',
             'email' => 'required|string|unique:trainers,email',
             'password' => 'required|string|max:255|confirmed',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
@@ -58,6 +60,9 @@ class TrainersController extends Controller {
 
         $request->validate([
             'name' => 'required|string',
+            'lat' => 'required|string',
+            'lng' => 'required|string',
+            'email' => 'required|string|unique:trainers,email,' . $trainer->id,
             'password' => 'required|string|max:255|confirmed',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);

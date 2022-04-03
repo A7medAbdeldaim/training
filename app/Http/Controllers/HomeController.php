@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\Contact;
 use App\Models\Book;
 use App\Models\Library;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -36,22 +37,9 @@ class HomeController extends Controller
     }
 
     public function search(Request $request) {
-        $search = $request->search;
+        $trainers = Trainer::get();
 
-        if ($request->has('type')) {
-            if ($request->type == 1) {
-                $type = 'Book';
-                $books = Book::where('name_en', 'like', "%$search%")->get();
-            } else {
-                $type = 'Library';
-                $books = Library::where('name_en', 'like', "%$search%")->get();
-            }
-        } else {
-            $type = 'Book';
-            $books = Book::where('name_en', 'like', "%$search%")->get();
-        }
-
-        return view('search', compact('search', 'books', 'type'));
+        return view('search', compact('trainers'));
     }
 
     public function profile(){
