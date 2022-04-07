@@ -30,7 +30,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $trainers = Trainer::all();
+        $trainings = Training::all();
+        return view('home', compact('trainers', 'trainings'));
     }
 
     public function about() {

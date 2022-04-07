@@ -59,42 +59,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="full blog_img_popular">
-                        <img class="img-responsive" src="{{ asset('images/p1.png') }}" alt="#" />
-                        <h4>Financial Accounting</h4>
+                @foreach($trainers as $trainer)
+                    <div class="col-md-3">
+                        <a href="{{ route('trainer_show', $trainer->id) }}">
+                        <div class="full blog_img_popular">
+                            <img class="img-responsive" src="{{ $trainer->image }}" alt="#" />
+                            <h4>{{ $trainer->name }}</h4>
+                        </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="full blog_img_popular">
-                        <img class="img-responsive" src="{{ asset('images/p2.png') }}" alt="#" />
-                        <h4>Managerial Accounting</h4>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="full blog_img_popular">
-                        <img class="img-responsive" src="{{ asset('images/p3.png') }}" alt="#" />
-                        <h4>Intermediate Accounting</h4>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="full blog_img_popular">
-                        <img class="img-responsive" src="{{ asset('images/p1.png') }}" alt="#" />
-                        <h4>Financial Accounting</h4>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="full blog_img_popular">
-                        <img class="img-responsive" src="{{ asset('images/p2.png') }}" alt="#" />
-                        <h4>Managerial Accounting</h4>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="full blog_img_popular">
-                        <img class="img-responsive" src="{{ asset('images/p3.png') }}" alt="#" />
-                        <h4>Intermediate Accounting</h4>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -136,66 +110,22 @@
                 <div class="col-md-12">
                     <div class="full">
                         <div class="heading_main text_align_center">
-                            <h2><span>News</span></h2>
+                            <h2><span>Trainings</span></h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
-                    <div id="demo" class="carousel slide" data-ride="carousel">
-
-                        <!-- The slideshow -->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="full blog_img_popular">
-                                            <img class="img-responsive" src="{{ asset('images/img9.png') }}" alt="#" />
-                                            <h4>Technology</h4>
-                                            <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="full blog_img_popular">
-                                            <img class="img-responsive" src="{{ asset('images/img8.png') }}" alt="#" />
-                                            <h4>Education</h4>
-                                            <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                                        </div>
-                                    </div>
-                                </div>
+                @foreach($trainings as $training)
+                    <div class="col-md-3">
+                        <a href="{{ route('training_show', $training->id) }}">
+                            <div class="full blog_img_popular">
+                                <img class="img-responsive" src="{{ $training->image }}" alt="#" />
+                                <h4>{{ $training->name }}</h4>
                             </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="full blog_img_popular">
-                                            <img class="img-responsive" src="{{ asset('images/img9.png') }}" alt="#" />
-                                            <h4>Technology</h4>
-                                            <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="full blog_img_popular">
-                                            <img class="img-responsive" src="{{ asset('images/img8.png') }}" alt="#" />
-                                            <h4>Education</h4>
-                                            <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
                         </a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </a>
-
                     </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </div>
