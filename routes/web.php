@@ -38,6 +38,9 @@ Route::post('/profile', [HomeController::class, 'profile_post'])->name('profile.
 Route::get('/library/{id}', [LibraryController::class, 'show'])->name('categories.show');
 Route::get('/trainings/{id}', [BookController::class, 'show'])->name('trainings.show');
 
+Route::get('trainer_show/{trainer_id}', [HomeController::class, 'trainer_show'])->name('trainer_show');
+Route::get('training_show/{training_id}', [HomeController::class, 'training_show'])->name('training_show');
+
 Route::get('contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
 Route::post('contact-us', [HomeController::class, 'contact'])->name('contact');
 
@@ -107,19 +110,20 @@ Route::group(['prefix'=>'trainers','as'=>'trainers.'], function(){
 
     Route::group(['middleware' => 'auth:trainers'], function(){
 
-        Route::get('/', [Trainer\BooksController::class, 'index'])->name('trainings');
-        Route::get('/trainings', [Trainer\BooksController::class, 'index']);
-        Route::get('trainings/create', [Trainer\BooksController::class, 'create'])->name('trainings.create');
-        Route::post('trainings/store', [Trainer\BooksController::class, 'store'])->name('trainings.store');
-        Route::get('trainings/edit/{id}', [Trainer\BooksController::class, 'edit'])->name('trainings.edit');
-        Route::patch('trainings/update/{id}', [Trainer\BooksController::class, 'update'])->name('trainings.update');
-        Route::get('trainings/delete/{id}', [Trainer\BooksController::class, 'destroy'])->name('trainings.destroy');
+        Route::get('/', [Trainer\TrainingsController::class, 'index'])->name('trainings');
+        Route::get('/trainings', [Trainer\TrainingsController::class, 'index']);
+        Route::get('trainings/create', [Trainer\TrainingsController::class, 'create'])->name('trainings.create');
+        Route::post('trainings/store', [Trainer\TrainingsController::class, 'store'])->name('trainings.store');
+        Route::get('trainings/edit/{id}', [Trainer\TrainingsController::class, 'edit'])->name('trainings.edit');
+        Route::patch('trainings/update/{id}', [Trainer\TrainingsController::class, 'update'])->name('trainings.update');
+        Route::get('trainings/delete/{id}', [Trainer\TrainingsController::class, 'destroy'])->name('trainings.destroy');
 
-        Route::get('/book_requests', [Trainer\BookRequestsController::class, 'index'])->name('book_requests');
-
-        Route::get('/payment_requests', [Trainer\PaymentRequestsController::class, 'index'])->name('payment_requests');
-
-        Route::get('/rent_requests', [Trainer\RentRequestsController::class, 'index'])->name('rent_requests');
+        Route::get('training/{training_id}/lessons', [Trainer\LessonsController::class, 'index'])->name('lessons');
+        Route::get('training/{training_id}/lessons/create', [Trainer\LessonsController::class, 'create'])->name('lessons.create');
+        Route::post('training/{training_id}/lessons/store', [Trainer\LessonsController::class, 'store'])->name('lessons.store');
+        Route::get('training/{training_id}/lessons/edit/{id}', [Trainer\LessonsController::class, 'edit'])->name('lessons.edit');
+        Route::patch('training/{training_id}/lessons/update/{id}', [Trainer\LessonsController::class, 'update'])->name('lessons.update');
+        Route::get('training/{training_id}/lessons/delete/{id}', [Trainer\LessonsController::class, 'destroy'])->name('lessons.destroy');
 
         Route::post('/logout', [Trainer\Auth\LoginController::class, 'logout'])->name('logout');
 

@@ -25,7 +25,7 @@
                                 <h3 class="card-title">Edit a New Training</h3>
                             </div>
                             @include('templates.errors')
-                            <form role="form" action="{{ route('admin.trainings.update', $training->id) }}" method="post" enctype="multipart/form-data">
+                            <form role="form" action="{{ route('trainers.trainings.update', $training->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 {{ method_field('PATCH') }}
                                 <div class="card-body col-6">

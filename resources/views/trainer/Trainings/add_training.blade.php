@@ -1,5 +1,5 @@
 @extends('templates.admin_layout')
-@section('title', 'Edit Training')
+@section('title', 'Add Training')
 
 @section('content')
 
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Edit Training</h1>
+                        <h1>Add Training</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -22,24 +22,23 @@
                     <div class="col-12">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Edit a New Training</h3>
+                                <h3 class="card-title">Add a New  Training</h3>
                             </div>
                             @include('templates.errors')
-                            <form role="form" action="{{ route('admin.trainings.update', $training->id) }}" method="post" enctype="multipart/form-data">
+                            <form role="form" action="{{ route('trainers.trainings.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                {{ method_field('PATCH') }}
                                 <div class="card-body col-6">
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input type="text" id="name" class="form-control"
                                                placeholder="Enter Training Name" name="name"
-                                               value="{{ $training->name }}" required>
+                                               value="{{old('name')}}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea id="description" class="form-control"
-                                                  placeholder="Enter Training Email" name="description" required>
-                                            {{ $training->description }}
+                                                  placeholder="Enter Training Description" name="description" required>
+                                            {{old('description')}}
                                         </textarea>
                                     </div>
 
@@ -49,10 +48,6 @@
                                                 name="category_id"
                                                 required>
                                             @foreach($categories as $category)
-                                                @if ($category->id == $training->category_id)
-                                                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
-                                                    @continue
-                                                @endif
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
@@ -64,10 +59,6 @@
                                                 name="trainer_id"
                                                 required>
                                             @foreach($trainers as $trainer)
-                                                @if ($trainer->id == $training->trainer_id)
-                                                    <option value="{{ $trainer->id }}" selected>{{ $trainer->name }}</option>
-                                                    @continue
-                                                @endif
                                                 <option value="{{ $trainer->id }}">{{ $trainer->name }}</option>
                                             @endforeach
                                         </select>
@@ -77,21 +68,20 @@
                                         <label for="price">Price</label>
                                         <input type="number" id="price" class="form-control"
                                                placeholder="Enter Training Price" name="price"
-                                               value="{{ $training->price }}" required>
+                                               value="{{old('price')}}" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Image</label>
                                         <input type="file" id="image" class="form-control"
                                                name="image"
-                                               value="{{ $training->image }}">
+                                               value="{{old('image')}}" required>
                                     </div>
-
                                 </div>
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-success btn-block">Edit Training</button>
+                                    <button type="submit" class="btn btn-success btn-block">Add Training</button>
                                 </div>
                             </form>
                         </div>

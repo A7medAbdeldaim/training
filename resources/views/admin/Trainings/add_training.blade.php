@@ -54,6 +54,17 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="trainer_id">Trainer</label>
+                                        <select class="form-control" id="trainer_id"
+                                                name="trainer_id"
+                                                required>
+                                            @foreach($trainers as $trainer)
+                                                <option value="{{ $trainer->id }}">{{ $trainer->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="price">Price</label>
                                         <input type="number" id="price" class="form-control"
                                                placeholder="Enter Training Price" name="price"

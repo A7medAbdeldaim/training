@@ -58,10 +58,11 @@
                                 position:  {lat: Number(value.lat), lng: Number(value.lng)},
                                 map: map,
                                 title: value.name,
-
                             });
                             addInfoWindow(marker, '<div class="map-info-window">' +
-                                '<h3><a href="#">Trainer Name: ' + value.name + '</a></h3>' +
+                                '<h3><a href="/trainer_show/' + value.id + '">Trainer Name: ' + value.name + '</a></h3>' +
+                                '<p>Email: ' + value.email + '</p>' +
+                                '<p>Phone: ' + value.phone + '</p>' +
                                 '<p>Address: ' + value.address + '</p>' +
                                 '</div>');
                         });

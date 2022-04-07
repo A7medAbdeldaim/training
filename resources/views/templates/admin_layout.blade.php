@@ -102,7 +102,12 @@
                             </a>
                         </li>
                     @elseif (auth('trainers')->check())
-
+                        <li class="nav-item">
+                            <a href="{{ route('trainers.trainings') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Trainings</p>
+                            </a>
+                        </li>
                     @endif
 
                 </ul>

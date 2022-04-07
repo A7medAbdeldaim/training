@@ -50,8 +50,18 @@ class Trainer extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function library(): HasOne
+    public function courses(): HasMany
     {
-        return $this->hasOne(Library::class);
+        return $this->hasMany(Training::class);
+    }
+
+    public function getImageAttribute(): string
+    {
+        return Storage::url($this->attributes['image']);
+    }
+
+    public function getVideoAttribute(): string
+    {
+        return Storage::url($this->attributes['video']);
     }
 }

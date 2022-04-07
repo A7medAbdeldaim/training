@@ -62,19 +62,19 @@
                 <ul class="navbar-nav">
                     <li><a class="nav-link active" style="color: #fff;" href="{{ route('home')}}">Home</a></li>
                     <li><a class="nav-link" style="color: #fff;" href="{{ route('about')}}">About</a></li>
-                    <li><a class="nav-link" style="color: #fff;" href="{{ route('home')}}">Talents</a></li>
+{{--                    <li><a class="nav-link" style="color: #fff;" href="{{ route('home')}}">Talents</a></li>--}}
                     <li><a class="nav-link" style="color: #fff;" href="{{ route('contact_us')}}">Contact us</a></li>
-                    <li><a class="nav-link" style="color: #fff;" href="{{ route('search')}}">Search</a></li>
 
                     @if (auth('trainees')->check())
+                        <li><a class="nav-link" style="color: #fff;" href="{{ route('search')}}">Search</a></li>
                         <li class="">
-                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fff">
                                 <span class="sr-only">Toggle Dropdown</span>
                                 {{ auth('trainees')->user()->name }}
                             </a>
                             <div class="dropdown-menu">
-                                <a class="text-dark" href="{{ route('profile') }}">Profile</a>
-                                <div class="dropdown-divider"></div>
+{{--                                <a class="text-dark" href="{{ route('profile') }}">Profile</a>--}}
+{{--                                <div class="dropdown-divider"></div>--}}
                                 <a class="text-dark" onclick="submit_form()" href="#">Logout</a>
                             </div>
                         </li>
@@ -87,15 +87,16 @@
                             }
                         </script>
                     @elseif (auth('trainers')->check())
+                        <li><a class="nav-link" style="color: #fff;" href="{{ route('trainers.trainings')}}">Dashboard</a></li>
                         <li class="">
-                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fff">
                                 <span class="sr-only">Toggle Dropdown</span>
                                 {{ auth('trainers')->user()->name }}
                             </a>
                             <div class="dropdown-menu" style="left: auto;">
-                                <a class="text-dark" href="{{ route('profile') }}">Profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="text-dark" onclick="submit_form()" href="#">Logout</a>
+{{--                                <a class="text-dark" href="{{ route('profile') }}">Profile</a>--}}
+{{--                                <div class="dropdown-divider"></div>--}}
+                                <a class="nav-link" onclick="submit_form()" href="#">Logout</a>
                             </div>
                         </li>
                         <form id="logout_form" class="d-none" method="post" action="{{ route('logout') }}">
@@ -132,7 +133,7 @@
                                         <h4>Free Educations</h4>
                                         <br>
                                         <div class="full center">
-                                            <a class="contact_bt" href="courses.html">Start Learning Talent</a>
+                                            <a class="contact_bt" href="{{ route('search') }}">Start Learning Talent</a>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +149,7 @@
                                         <h4>Free Educations</h4>
                                         <br>
                                         <div class="full center">
-                                            <a class="contact_bt" href="courses.html">Start your Talent</a>
+                                            <a class="contact_bt" href="{{ route('search') }}">Start your Talent</a>
                                         </div>
                                     </div>
                                 </div>

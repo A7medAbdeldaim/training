@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -15,15 +15,15 @@ use function view;
 
 class TrainingsController extends Controller {
     public function index() {
-        $trainings = Training::all();
-        return view('admin.Trainings.trainings', ['trainings' => $trainings]);
+        $trainings = Training::where('trainer_id', auth('trainers')->user()->id)->get();
+        return view('trainer.Trainings.trainings', ['trainings' => $trainings]);
     }
 
     public function create() {
         $categories = Category::all();
-        $trainers = Trainer::all();
+        $trainers = Trainer::where('id', auth('trainers')->user()->id)->get();
 
-        return view('admin.Trainings.add_training', compact('categories', 'trainers'));
+        return view('trainer.Trainings.add_training', compact('categories', 'trainers'));
     }
 
     public function store(Request $request) {
@@ -44,15 +44,15 @@ class TrainingsController extends Controller {
 
         Training::create($request + ['image' => $fileName ?? null]);
 
-        return redirect()->route('admin.trainings')->with(['status' => 'success', 'message' => 'Training Added Successfully']);
+        return redirect()->route('trainers.trainings')->with(['status' => 'success', 'message' => 'Training Added Successfully']);
     }
 
     public function edit($id){
         $training = Training::find($id);
         $categories = Category::all();
-        $trainers = Trainer::all();
+        $trainers = Trainer::where('id', auth('trainers')->user()->id)->get();
 
-        return view('admin.Trainings.edit_training', compact('training', 'categories', 'trainers'));
+        return view('trainer.Trainings.edit_training', compact('training', 'categories', 'trainers'));
     }
 
     public function update(Request $request, $id) {
@@ -79,7 +79,7 @@ class TrainingsController extends Controller {
 
         $training->update($request + ['image' => $fileName ?? $training->image]);
 
-        return redirect()->route('admin.trainings')->with(['status' => 'success', 'message' => 'Training Edited Successfully']);
+        return redirect()->route('trainers.trainings')->with(['status' => 'success', 'message' => 'Training Edited Successfully']);
     }
 
     public function destroy($id) {
@@ -90,7 +90,7 @@ class TrainingsController extends Controller {
         }
         $training->delete();
 
-        return redirect()->route('admin.trainings')->with(['status' => 'success', 'message' => 'Training Deleted Successfully']);
+        return redirect()->route('trainers.trainings')->with(['status' => 'success', 'message' => 'Training Deleted Successfully']);
     }
 
     public function uploadImage($file) {

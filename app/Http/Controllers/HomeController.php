@@ -6,6 +6,7 @@ use App\Mail\Contact;
 use App\Models\Book;
 use App\Models\Library;
 use App\Models\Trainer;
+use App\Models\Training;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -94,5 +95,17 @@ class HomeController extends Controller
 
     public function contact_us(Request $request) {
         return view('contact');
+    }
+
+    public function trainer_show($trainer_id) {
+        $trainer = Trainer::find($trainer_id);
+
+        return view('trainer', compact('trainer'));
+    }
+
+    public function training_show($training_id) {
+        $course = Training::find($training_id);
+
+        return view('course', compact('course'));
     }
 }
