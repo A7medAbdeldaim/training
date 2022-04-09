@@ -50,13 +50,25 @@ class HomeController extends Controller
     }
 
     public function profile_post(Request $request) {
-        $user = auth()->user();
+        $user = auth('trainers')->user();
         if ($request->has('name')) {
             $user->name = $request->get('name');
         }
 
         if ($request->has('email')) {
             $user->email = $request->get('email');
+        }
+
+        if ($request->has('phone')) {
+            $user->phone = $request->get('phone');
+        }
+
+        if ($request->has('address')) {
+            $user->address = $request->get('address');
+        }
+
+        if ($request->has('bio')) {
+            $user->bio = $request->get('bio');
         }
 
         if ($request->has('password')) {
@@ -67,6 +79,12 @@ class HomeController extends Controller
             $file = $request->file('image');
             $path = $file->store('user', ['disk' => 'public']);
             $user->image = $path;
+        }
+
+        if ($request->hasFile('video')) {
+            $file = $request->file('video');
+            $path = $file->store('user', ['disk' => 'public']);
+            $user->video = $path;
         }
 
         $user->save();

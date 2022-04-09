@@ -48,7 +48,11 @@
                         <p>{{ $trainer->bio }}</p>
 
                         <h3>Video: </h3>
-                        <p>{{ $trainer->video }}</p>
+                        <p>
+                            <video autoplay>
+                                <source src="{{ $trainer->video }}" type="video/mp4">
+                            </video>
+                        </p>
 
                         <h3>Map: </h3>
                         <div id="map" style="margin: 0"></div>

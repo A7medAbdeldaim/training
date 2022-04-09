@@ -27,6 +27,7 @@ class Trainer extends Authenticatable
         'password',
         'rank',
         'image',
+        'video',
         'lat',
         'lng',
     ];
