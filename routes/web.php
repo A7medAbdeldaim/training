@@ -34,12 +34,16 @@ Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::post('/profile', [HomeController::class, 'profile_post'])->name('profile.edit');
+Route::get('/chat', [HomeController::class, 'chat'])->name('chat');
+Route::post('/send_message/{target_id}', [HomeController::class, 'send_message'])->name('send_message');
 
 Route::get('/library/{id}', [LibraryController::class, 'show'])->name('categories.show');
 Route::get('/trainings/{id}', [BookController::class, 'show'])->name('trainings.show');
 
 Route::get('trainer_show/{trainer_id}', [HomeController::class, 'trainer_show'])->name('trainer_show');
 Route::get('training_show/{training_id}', [HomeController::class, 'training_show'])->name('training_show');
+Route::get('lesson_show/{lesson_id}', [HomeController::class, 'lesson_show'])->name('lesson_show');
+Route::post('training_show/{training_id}/review', [HomeController::class, 'post_review'])->name('training_review');
 
 Route::get('contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
 Route::post('contact-us', [HomeController::class, 'contact'])->name('contact');

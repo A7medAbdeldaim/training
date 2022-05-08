@@ -27,7 +27,11 @@
                     </div>
                     <hr>
                     <a class="btn btn-block btn-primary" href="tel:{{ $trainer->phone }}">Call Trainer</a>
-
+                    @if (auth('trainees')->check())
+                        <a class="btn btn-block btn-primary" data-toggle="modal" data-target="#chatModal" href="#">Message Trainer</a>
+                    @else
+                        <a class="btn btn-block btn-primary btn-disabled">Message Trainer</a>
+                    @endif
                 </div>
 
                 <div class="col-lg-9 col-md-9 col-sm-12" style="background: #fff; padding: 30px 20px; border-radius: 10px; box-shadow: 1px 2px 3px #aaa">
@@ -49,7 +53,7 @@
 
                         <h3>Video: </h3>
                         <p>
-                            <video autoplay>
+                            <video controls>
                                 <source src="{{ $trainer->video }}" type="video/mp4">
                             </video>
                         </p>
@@ -104,4 +108,29 @@
         </div>
     </div>
     <!-- end section -->
+
+    <div class="modal fade" id="chatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Send Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('send_message', ['target_id' => $trainer->id]) }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <div class=" field">
+                                <textarea class="form-control" name="message" placeholder="Massage"></textarea>
+                                <span style="float:right"><button class="btn btn-primary"
+                                                                  type="submit">Send</button></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

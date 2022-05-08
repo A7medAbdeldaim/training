@@ -21,4 +21,9 @@ class Training extends Model
     {
         return Storage::url($this->attributes['image']);
     }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(TrainingReviews::class, 'training_id');
+    }
 }

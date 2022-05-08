@@ -73,8 +73,8 @@
                                 {{ auth('trainees')->user()->name }}
                             </a>
                             <div class="dropdown-menu">
-{{--                                <a class="text-dark" href="{{ route('profile') }}">Profile</a>--}}
-{{--                                <div class="dropdown-divider"></div>--}}
+                                <a class="text-dark" href="{{ route('chat') }}">Chat</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="text-dark" onclick="submit_form()" href="#">Logout</a>
                             </div>
                         </li>

@@ -21,4 +21,9 @@ class Lesson extends Model
     {
         return Storage::url($this->attributes['image']);
     }
+
+    public function getVideoAttribute(): string
+    {
+        return Storage::url($this->attributes['video']);
+    }
 }
