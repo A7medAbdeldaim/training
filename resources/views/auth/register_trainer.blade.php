@@ -31,6 +31,12 @@
                                         value="{{ old('email') }}">
 
                                     </div>
+
+                                    <div class="form-group first">
+                                        <label for="phone" style="display: block">Phone</label>
+                                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="" value="{{ old('phone')}}">
+
+                                    </div>
                                     <div class="form-group last mb-4">
                                         <label for="password">Password</label>
                                         <input type="password" class="form-control" id="password" name="password">
