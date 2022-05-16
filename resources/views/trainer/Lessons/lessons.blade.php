@@ -50,7 +50,7 @@
                                             <td>{{ $lesson->training->name }}</td>
                                             <td>
                                                 <a href="{{ route('trainers.lessons.edit', ['id' => $lesson->id, 'training_id' => $training->id]) }}" class="btn btn-sm btn-primary">Edit</a>
-{{--                                                <a href="{{ route('trainers.lessons.destroy', ['id' => $lesson->id, 'training_id' => $training->id]) }}" class="btn btn-sm btn-danger">Delete</a>--}}
+                                                <a href="{{ route('trainers.lessons.destroy', ['id' => $lesson->id, 'training_id' => $training->id]) }}" class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

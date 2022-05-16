@@ -50,7 +50,7 @@
                                             <td>{{ \Carbon\Carbon::parse($trainee->created_at)->format('M d, Y') }}</td>
                                             <td>
                                                 <a href="{{ route('admin.trainees.edit', $trainee->id) }}" class="btn btn-sm btn-primary">Edit</a>
-{{--                                                <a href="{{ route('admin.trainees.destroy', $trainee->id) }}" class="btn btn-sm btn-danger">Delete</a>--}}
+                                                <a href="{{ route('admin.trainees.destroy', $trainee->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

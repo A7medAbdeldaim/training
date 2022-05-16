@@ -51,7 +51,7 @@
                                             <td>
                                                 <a href="{{ route('trainers.lessons', $training->id) }}" class="btn btn-sm btn-primary">Lessons</a>
                                                 <a href="{{ route('trainers.trainings.edit', $training->id) }}" class="btn btn-sm btn-primary">Edit</a>
-{{--                                                <a href="{{ route('trainers.trainings.destroy', $training->id) }}" class="btn btn-sm btn-danger">Delete</a>--}}
+                                                <a href="{{ route('trainers.trainings.destroy', $training->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

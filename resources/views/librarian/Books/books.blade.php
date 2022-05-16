@@ -54,7 +54,7 @@
                                             <td>{{ $book->stock }}</td>
                                             <td>
                                                 <a href="{{ route('librarian.books.edit', $book->id) }}" class="btn btn-sm btn-primary">Edit</a>
-{{--                                                <a href="{{ route('librarian.books.destroy', $book->id) }}" class="btn btn-sm btn-danger">Delete</a>--}}
+                                                <a href="{{ route('librarian.books.destroy', $book->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach
