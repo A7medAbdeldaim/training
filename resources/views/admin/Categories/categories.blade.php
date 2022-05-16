@@ -47,7 +47,7 @@
                                             <td>{{ (++$k) }}</td>
                                             <td>{{ $category->name }}</td>
                                             <td>
-                                                <a href="{{ route('admin.categories.destroy', $category->id) }}" class="btn btn-sm btn-danger">Delete</a>
+{{--                                                <a href="{{ route('admin.categories.destroy', $category->id) }}" class="btn btn-sm btn-danger">Delete</a>--}}
                                             </td>
                                         </tr>
                                     @endforeach

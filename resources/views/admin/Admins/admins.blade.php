@@ -50,7 +50,7 @@
                                             <td>{{ \Carbon\Carbon::parse($user->created_at)->format('M d, Y') }}</td>
                                             <td>
                                                 <a href="{{ route('admin.admins.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                                <a href="{{ route('admin.admins.destroy', $user->id) }}" class="btn btn-sm btn-danger">Delete</a>
+{{--                                                <a href="{{ route('admin.admins.destroy', $user->id) }}" class="btn btn-sm btn-danger">Delete</a>--}}
                                             </td>
                                         </tr>
                                     @endforeach
