@@ -192,7 +192,11 @@ class HomeController extends Controller
             $messages = $messages->merge($trainer_messages)->sortBy('created_at');
         }
         $conversation = Conversation::find($conversation_id);
-        $trainer_id = $conversation->trainer_id;
+        if ($conversation) {
+            $trainer_id = $conversation->trainer_id;
+        } else {
+            $trainer_id = 0;
+        }
 
         return view('chat', compact('conversations', 'messages', 'trainer_id'));
     }
