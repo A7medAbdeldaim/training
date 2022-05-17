@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class TrainerMessage extends Model
 {
     use HasFactory;
-    protected $fillable = ['trainer_id', 'message'];
+    protected $fillable = ['trainer_id', 'message', 'conversation_id'];
 
     public function trainer(): BelongsTo
     {

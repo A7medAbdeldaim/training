@@ -94,6 +94,8 @@
                                 {{ auth('trainers')->user()->name }}
                             </a>
                             <div class="dropdown-menu" style="left: auto;">
+                                <a class="text-dark" href="{{ route('chatTrainer') }}">Chat</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="text-dark" href="{{ route('profile') }}">Profile</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="nav-link" onclick="submit_form()" href="#">Logout</a>

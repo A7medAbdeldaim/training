@@ -35,6 +35,7 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::post('/profile', [HomeController::class, 'profile_post'])->name('profile.edit');
 Route::get('/chat', [HomeController::class, 'chat'])->name('chat');
+Route::get('/chatTrainer', [HomeController::class, 'chatTrainer'])->name('chatTrainer');
 Route::post('/send_message/{target_id}', [HomeController::class, 'send_message'])->name('send_message');
 
 Route::get('/library/{id}', [LibraryController::class, 'show'])->name('categories.show');

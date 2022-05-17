@@ -201,29 +201,78 @@ class HomeController extends Controller
         return view('chat', compact('conversations', 'messages', 'trainer_id'));
     }
 
+    public function chatTrainer()
+    {
+        $conversation_id = request()->get('conversation_id') ?? null;
+
+        $user = auth('trainers')->user();
+        $conversations = Conversation::where('trainer_id', $user->id)->get();
+
+        if (!$conversation_id) {
+            $conversation_id = $conversations->first()->id ?? null;
+        }
+        $messages = TrainerMessage::where('conversation_id',  $conversation_id)->get();
+        if ($messages->count()) {
+            $trainee_messages = TraineeMessage::where('conversation_id', $conversation_id)->get();
+
+            $messages = $messages->merge($trainee_messages)->sortBy('created_at');
+        }
+        $conversation = Conversation::find($conversation_id);
+        if ($conversation) {
+            $trainee_id = $conversation->trainee_id;
+        } else {
+            $trainee_id = 0;
+        }
+
+        return view('chatTrainer', compact('conversations', 'messages', 'trainee_id'));
+    }
+
     public function send_message($target_id, Request $request)
     {
-        $user = auth('trainees')->user();
         $request->validate([
             'message' => 'required|string',
         ]);
 
-        $conversation = Conversation::where([
-            'trainee_id' => $user->id,
-            'trainer_id' => $target_id,
-        ])->first();
-
-        if (!$conversation) {
-            $conversation = Conversation::create([
+        if (auth('trainees')->check()) {
+            $user = auth('trainees')->user();
+            $conversation = Conversation::where([
                 'trainee_id' => $user->id,
                 'trainer_id' => $target_id,
+            ])->first();
+
+            if (!$conversation) {
+                $conversation = Conversation::create([
+                    'trainee_id' => $user->id,
+                    'trainer_id' => $target_id,
+                ]);
+            }
+            $message = TraineeMessage::create([
+                'trainee_id' => $user->id,
+                'conversation_id' => $conversation->id,
+                'message' => $request->message,
             ]);
+            return redirect()->route('chat');
+        } else {
+            $user = auth('trainers')->user();
+            $conversation = Conversation::where([
+                'trainer_id' => $user->id,
+                'trainee_id' => $target_id,
+            ])->first();
+
+            if (!$conversation) {
+                $conversation = Conversation::create([
+                    'trainer_id' => $user->id,
+                    'trainee_id' => $target_id,
+                ]);
+            }
+            $message = TrainerMessage::create([
+                'trainer_id' => $user->id,
+                'conversation_id' => $conversation->id,
+                'message' => $request->message,
+            ]);
+            return redirect()->route('chatTrainer');
         }
-        $message = TraineeMessage::create([
-            'trainee_id' => $user->id,
-            'conversation_id' => $conversation->id,
-            'message' => $request->message,
-        ]);
-        return redirect()->route('chat');
+
+
     }
 }
