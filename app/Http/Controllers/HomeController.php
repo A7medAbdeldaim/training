@@ -211,9 +211,9 @@ class HomeController extends Controller
         if (!$conversation_id) {
             $conversation_id = $conversations->first()->id ?? null;
         }
-        $messages = TrainerMessage::where('conversation_id',  $conversation_id)->get();
+        $messages = TraineeMessage::where('conversation_id',  $conversation_id)->get();
         if ($messages->count()) {
-            $trainee_messages = TraineeMessage::where('conversation_id', $conversation_id)->get();
+            $trainee_messages = TrainerMessage::where('conversation_id', $conversation_id)->get();
 
             $messages = $messages->merge($trainee_messages)->sortBy('created_at');
         }
